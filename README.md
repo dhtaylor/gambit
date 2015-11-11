@@ -16,3 +16,7 @@ Project Components
 	-bet value
 -Scoring System
 	-dolla bills yo!
+-high score .txt file
+	-write to the file
+	-read from file for high score list
+	
