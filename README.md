@@ -3,6 +3,10 @@ This is a test file for README.
 
 Project Components
 -GUI
+	-Welcome Screen
+		-menu to other screens
+	-Play Screen
+	-High Scores Screen
 	-Event handling
 -Deck of Cards
 	-card values
