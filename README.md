@@ -24,3 +24,5 @@ Project Components
 	-write to the file
 	-read from file for high score list
 	
+	
+	Hello!
