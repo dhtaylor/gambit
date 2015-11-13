@@ -20,9 +20,9 @@ Project Components
 	-bet value
 -Scoring System
 	-dolla bills yo!
--high score .txt file
+-Running bank amount in a .txt file
 	-write to the file
-	-read from file for high score list
+	-read from file for bank amount
 	
 Rules:
 	when deck < 8 cards, grab discard and reshuffle.
