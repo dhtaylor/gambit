@@ -24,5 +24,6 @@ Project Components
 	-write to the file
 	-read from file for high score list
 	
-	
-	Hello!
+Rules:
+	when deck < 8 cards, grab discard and reshuffle.
+	dealer must hit unless hard 17 or above
