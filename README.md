@@ -27,3 +27,19 @@ Project Components
 Rules:
 	when deck < 8 cards, grab discard and reshuffle.
 	dealer must hit unless hard 17 or above
+	
+	
+	Gameplay steps:
+	1- Place bet
+		--> at end of place bet call the dealHand method
+	2- Deal initial cards
+		-hit User X2
+		-hit Dealer X2
+	3- Player Turn
+		-hit until stay or bust
+		-if bust go to step 5.
+	4- Dealer Turn
+		-hit until hand total >=17, or bust.
+	5- Evaluate hands
+	6- Payout bets
+	7- Play again, or save bank to file.
