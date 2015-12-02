@@ -12,9 +12,11 @@ public class Hand {
 		this.currentValue = cardOne.getCardValue() + cardTwo.getCardValue();
 		
 	}
+	
 	public void setCurrentValue(int value){
 		this.currentValue = value;
 	}
+	
 	public int getCurrentValue(){
 		return currentValue;
 	}
