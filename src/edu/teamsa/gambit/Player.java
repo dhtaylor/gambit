@@ -2,7 +2,7 @@ package edu.teamsa.gambit;
 
 public class Player {
 	
-	Hand currentHand = new Hand();
+	Hand currentHand;
 	Player(){
 		//todo determine if we need a constructor here.
 	}
