@@ -8,7 +8,7 @@ public class Player {
 	}
 	
 	public void hit(Deck deck){
-		//todo hit logic
+		currentHand.add(deck.getTopCard());
 	}
 	
 	public void stay(){
