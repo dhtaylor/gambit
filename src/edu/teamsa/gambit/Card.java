@@ -8,7 +8,7 @@ public class Card {
 	public FaceValue faceValue;
 	public int cardValue;
 	public ImageIcon front;
-	public ImageIcon back = new ImageIcon(Card.class.getResource("back.jpg"));
+	public ImageIcon back = new ImageIcon("/gambit/images/back.jpg");
 	
 	Card(Suit suit, FaceValue faceValue, ImageIcon front){
 		this.suit = suit;
@@ -21,6 +21,22 @@ public class Card {
 		this.cardValue = value;
 	}
 	
+	public ImageIcon getFront() {
+		return front;
+	}
+
+	public void setFront(ImageIcon front) {
+		this.front = front;
+	}
+
+	public ImageIcon getBack() {
+		return back;
+	}
+
+	public void setBack(ImageIcon back) {
+		this.back = back;
+	}
+
 	private int getCardValue(){
 		return cardValue;
 	}

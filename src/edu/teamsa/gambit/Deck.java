@@ -12,7 +12,7 @@ public class Deck {
 	
 	public void createDeck(){
 		Suit suit = Suit.CLUB;
-		deck.add(new Card(suit,FaceValue.ACE,new ImageIcon(Deck.class.getResource("filename.jpg"))));
+		deck.add(new Card(suit,FaceValue.ACE,new ImageIcon("/gambit/images/back.jpg")));
 	}
 	
 	public Card getTopCard(){
