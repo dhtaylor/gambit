@@ -10,7 +10,7 @@ public class Card {
 	public ImageIcon front;
 	public ImageIcon back = new ImageIcon(Card.class.getResource("back.jpg"));
 	
-	private Card(Suit suit, FaceValue faceValue, ImageIcon front){
+	Card(Suit suit, FaceValue faceValue, ImageIcon front){
 		this.suit = suit;
 		this.faceValue = faceValue;
 		this.cardValue = faceValue.getCardValue();
