@@ -21,7 +21,7 @@ public class Card {
 		this.cardValue = value;
 	}
 	
-	private int getCardValue(){
+	public int getCardValue(){
 		return cardValue;
 	}
 }
