@@ -17,7 +17,7 @@ public class Card {
 		this.front = front;
 	}
 	
-	private void setCardValue(int value){
+	public void setCardValue(int value){
 		this.cardValue = value;
 	}
 	
@@ -37,7 +37,7 @@ public class Card {
 		this.back = back;
 	}
 
-	private int getCardValue(){
+	public int getCardValue(){
 		return cardValue;
 	}
 }
