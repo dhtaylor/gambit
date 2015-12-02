@@ -6,14 +6,17 @@ public class Hand {
 	
 	public Collection<Card> cards;
 	public int currentValue;
-	public int aceCount;
+	//public int aceCount;
 	
-	public Hand(){
+	public Hand(Card cardOne, Card cardTwo){
+		this.currentValue = cardOne.getCardValue() + cardTwo.getCardValue();
 		
 	}
+	
 	public void setCurrentValue(int value){
-		//set current value on hand
+		this.currentValue = value;
 	}
+	
 	public int getCurrentValue(){
 		return currentValue;
 	}
