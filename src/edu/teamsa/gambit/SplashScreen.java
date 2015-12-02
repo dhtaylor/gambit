@@ -18,8 +18,6 @@ import javax.swing.JPanel;
 public class SplashScreen extends JPanel
 {
 	private JButton start;
-//	private JButton leaders;
-//	private JButton losers;
 	private JButton quit;
 	
 	public SplashScreen()
@@ -30,13 +28,9 @@ public class SplashScreen extends JPanel
 		this.setLayout(new GridLayout(4, 1, 10, 10));
 
 		start = new JButton("Start New Game");
-		leaders = new JButton("Top Winners");
-		losers = new JButton("Biggest Losers");
 		quit = new JButton("Quit");
 
 		this.add(start);
-		this.add(leaders);
-		this.add(losers);
 		this.add(quit);
 
 	}
@@ -52,16 +46,6 @@ public class SplashScreen extends JPanel
 	{
 		return this.start;
 	}
-
-//	public JButton getLeaders()
-//	{
-//		return this.leaders;
-//	}
-//
-//	public JButton getLosers()
-//	{
-//		return this.losers;
-//	}
 
 	public JButton getQuit()
 	{
