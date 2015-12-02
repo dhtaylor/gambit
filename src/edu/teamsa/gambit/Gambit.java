@@ -11,12 +11,10 @@ package edu.teamsa.gambit;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,6 +30,7 @@ public class Gambit extends JFrame
 {
 
 	private String appName = "Gambit";
+	private JPanel gameArea;
 	
 	public static void main(String[] args)
 	{
@@ -45,6 +44,11 @@ public class Gambit extends JFrame
 		this.setBounds(100, 100, 450, 450);
 		this.getContentPane().setBackground(new Color(7, 99, 36));
 		this.setTitle(appName);
+		
+		gameArea = new JPanel();
+		gameArea.setLayout(new BorderLayout());
+		gameArea.setBackground(new Color(7, 99, 36));
+		this.getContentPane().add(gameArea, BorderLayout.CENTER);
 		
 		JLabel lblGame = new JLabel(this.getAppName().toUpperCase());
 		lblGame.setHorizontalAlignment(JLabel.CENTER);
@@ -69,39 +73,26 @@ public class Gambit extends JFrame
 	
 	public void displaySplash()
 	{
-		JPanel splash = new JPanel();
-		splash.setSize(10, 10);
-		splash.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		splash.setOpaque(false);
-		splash.setLayout(new GridLayout(4, 1, 10, 10));
+		SplashScreen splash = new SplashScreen();
 		
-		JButton start = new JButton("Start New Game");
-		JButton leaders = new JButton("Top Winners");
-		JButton losers = new JButton("Biggest Losers");
-		JButton quit = new JButton("Quit");
+		gameArea.add(splash, BorderLayout.CENTER);
 		
-		start.addActionListener(new ActionListener()
+		splash.getStart().addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				destroySplash();
+				splash.destroy();
 				
 			}
 		});
 		
+		splash.getQuit().addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				System.exit(0);
+			}
+		});
 		
-		splash.add(start);
-		splash.add(leaders);
-		splash.add(losers);
-		splash.add(quit);
 		
-		this.getContentPane().add(splash, BorderLayout.CENTER);
-	}
-	
-	public void destroySplash()
-	{
-		this.getContentPane().removeAll();
-		this.getContentPane().repaint();
 	}
 	
 }
