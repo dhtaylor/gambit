@@ -27,19 +27,12 @@ public class SplashScreen extends JPanel
 		this.setOpaque(false);
 		this.setLayout(new GridLayout(4, 1, 10, 10));
 
-		start = new JButton("Start New Game");
-		quit = new JButton("Quit");
+		this.start = new JButton("Start New Game");
+		this.quit = new JButton("Quit");
 
-		this.add(start);
-		this.add(quit);
+		this.add(this.start);
+		this.add(this.quit);
 
-	}
-
-	public void destroy()
-	{
-		this.removeAll();
-		this.repaint();
-		
 	}
 
 	public JButton getStart()
@@ -51,6 +44,5 @@ public class SplashScreen extends JPanel
 	{
 		return this.quit;
 	}
-	
 	
 }
