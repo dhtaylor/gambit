@@ -71,7 +71,7 @@ public class Gambit extends JFrame
 		// Set up the JFrame
 		super();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 650, 550);
+		this.setBounds(100, 100, 750, 550);
 		this.getContentPane().setBackground(applicationBackground);
 		this.setTitle(this.appName);
 		
