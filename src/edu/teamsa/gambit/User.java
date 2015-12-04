@@ -11,26 +11,56 @@ import javax.swing.JOptionPane;
 
 public class User extends Player {
 	
+	/** Player Name */
 	public String pName;
+	/** Value of the current bet */
 	public int currentBet;
+	/** Value of the user's bank */
 	public int bank;
+	/** Name of the file with the saved user information */
 	private String filename = "Gambit.bj";
 	
-	User(String name){
+	/**
+	 * Constructor for the User class - sets the name of the user
+	 * @param name - name of the user
+	 */
+	public User(String name)
+	{
 		this.pName = name;
 	}
 	
+	/**
+	 * Returns the value of the users bank
+	 * @return the value of the bank
+	 * 
+	 */
 	public int getBank()
 	{
 		return bank;
 	}
 	
+	/**
+	 * Sets the default bank value for the user
+	 */
+	public void setBank()
+	{
+		this.bank = 250;
+	}
+	
+	/**
+	 * Takes the amount of the user's bet and sets the currentBet value and then subtracts that amount from the bank
+	 * @param amount - amount of the user's bet
+	 */
 	public void placeBet(int amount)
 	{
 		currentBet = amount;
 		bank = bank - currentBet;
 	}
 	
+	/**
+	 * Processes the results of the game and then adjusts the user's bank accordingly
+	 * @param result - the result of the game 
+	 */
 	public void gameResults(String result)
 	{
 		if (result == "Blackjack")
@@ -58,6 +88,9 @@ public class User extends Player {
 		
 	}
 	
+	/**
+	 * Saves the user's name and bank value out to a a file called Gambit.bj
+	 */
 	public void save()
 	{
 		try (ObjectOutputStream outputObj = new ObjectOutputStream(new FileOutputStream(filename)))
@@ -75,6 +108,10 @@ public class User extends Player {
     	} finally { }
     }
 	
+	/**
+	 * Loads a saved game and sets the user name and bank value.
+	 * If a file is not found, it calls the save method and creates the file
+	 */
 	public void load()
 	{
 		try (ObjectInputStream inputObj = new ObjectInputStream(new FileInputStream(filename)))
@@ -84,7 +121,7 @@ public class User extends Player {
     		inputObj.close();
     	}catch (FileNotFoundException e)
     	{
-    		e.printStackTrace();
+    		this.save();
     	}catch (IOException e)
     	{
     		e.printStackTrace();
