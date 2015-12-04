@@ -17,12 +17,14 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
 public class ResultPanel extends JPanel
 {
 	private Dimension panelDimension = new Dimension(150, 550);
 	private Dimension labelDimension = new Dimension(150, 15);
+	private Border defaultBorder = BorderFactory.createEmptyBorder(10,10,10,10);
 	private Color panelColor = new Color(255, 255, 255);
 	private Color textColor = new Color(0, 0, 0);
 	
@@ -42,7 +44,7 @@ public class ResultPanel extends JPanel
 	{
 		super();
 		this.setLayout(new GridLayout(0, 1, 0, 0));
-		this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+		this.setBorder(this.defaultBorder);
 		this.setPreferredSize(this.panelDimension);
 		this.setBackground(this.panelColor);
 
@@ -131,7 +133,7 @@ public class ResultPanel extends JPanel
  		lblDealer = new JLabel("Dealer: Bob");
 		lblDealer.setPreferredSize(this.labelDimension);
 		lblDealer.setForeground(this.textColor);
-		lblDealer.setBorder(BorderFactory.createEmptyBorder(5,10,0,0));
+		lblDealer.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
 		
 		lblDWins = new JLabel("Wins: 0");
 		lblDWins.setPreferredSize(this.labelDimension);

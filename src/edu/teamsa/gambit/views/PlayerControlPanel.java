@@ -11,8 +11,8 @@ package edu.teamsa.gambit.views;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -20,10 +20,17 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
 public class PlayerControlPanel extends JPanel
 {
+	private Dimension panelDimension = new Dimension(150, 550);
+	private Dimension labelDimension = new Dimension(150, 15);
+	private Border defaultBorder = BorderFactory.createEmptyBorder(10,10,10,10);
+	private Color panelColor = new Color(255, 255, 255);
+	private Color textColor = new Color(0, 0, 0);
+	
 	private JLabel lblBank;
 	private ButtonGroup buttonGroup;
 	private JRadioButton five;
@@ -37,19 +44,17 @@ public class PlayerControlPanel extends JPanel
 	private JButton stay;
 	private JButton quit;
 	
-	private Color panelColor = new Color(255, 255, 255);
-	private Color textColor = new Color(0, 0, 0);
-	
 	public PlayerControlPanel()
 	{
 		super();
-		this.setLayout(new FlowLayout(FlowLayout.LEFT));
-		this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		this.setPreferredSize(new Dimension(100, 550));
+		this.setLayout(new GridLayout(0,1,0,0));
+		this.setBorder(this.defaultBorder);
+		this.setPreferredSize(this.panelDimension);
 		this.setBackground(this.panelColor);
 
-		this.lblBank = new JLabel("Bank: $");
+		this.lblBank = new JLabel("Bank: $0");
 		this.lblBank.setFont(new Font("arial", Font.BOLD, 14));
+		this.lblBank.setPreferredSize(this.labelDimension);
 		this.setForeground(this.textColor);
 		
 		this.five = new JRadioButton("$5");
