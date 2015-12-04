@@ -77,7 +77,7 @@ public class User extends Player {
 			
 			if (reply == JOptionPane.YES_OPTION)
 			{			
-				bank = 250;
+				setBank();
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Thanks, come again");
