@@ -35,6 +35,7 @@ public class PlayerControlPanel extends JPanel
 	private JButton placeBet;
 	private JButton hit;
 	private JButton stay;
+	private JButton quit;
 	
 	private Color panelColor = new Color(255, 255, 255);
 	private Color textColor = new Color(0, 0, 0);
@@ -76,6 +77,7 @@ public class PlayerControlPanel extends JPanel
 		this.placeBet = new JButton("Place Bet");
 		this.hit = new JButton("Hit");
 		this.stay = new JButton("Stay");
+		this.quit = new JButton("Quit");
 		
 		this.add(this.lblBank);
 		this.add(this.five);
@@ -86,6 +88,7 @@ public class PlayerControlPanel extends JPanel
 		this.add(this.placeBet);
 		this.add(this.hit);
 		this.add(this.stay);
+		this.add(this.quit);
 		
 	}
 
@@ -129,6 +132,11 @@ public class PlayerControlPanel extends JPanel
 		return stay;
 	}
 
+	public JButton getQuit()
+	{
+		return this.quit;
+	}
+	
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;

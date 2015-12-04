@@ -172,6 +172,12 @@ public class Gambit extends JFrame
 		playerControlPanel.setTextColor(applicationText);
 		gameArea.add(playerControlPanel, BorderLayout.WEST);
 		
+		playerControlPanel.getQuit().addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				System.exit(0);
+			}
+		});
+		
 	}
 	
 	public void createResultPanel()
