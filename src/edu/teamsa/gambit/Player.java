@@ -31,6 +31,10 @@ public class Player {
 		return handValue;
 	}
 	
+	public Card getHandCard(int handIndex){
+		return currentHand.get(handIndex);
+	}
+	
 	/**
 	 * The checkAces method will check the current players hand (user or dealer) for any aces value 11, and if the hand total
 	 * value is greater than 21, will set those  aces to value 1. it implements a nested if statement within a for each loop. 
@@ -39,7 +43,7 @@ public class Player {
 	 * 21 it will set the current card's value to 1. the loop will then go to the next card, check the hand value (which should
 	 * now be less than 21) and continue normally. 
 	 */
-	private void checkAces(){
+	public void checkAces(){
 		for(Card card : currentHand){
 			if(this.getHandValue() > 21){
 				if(card.getCardValue() == 11){
