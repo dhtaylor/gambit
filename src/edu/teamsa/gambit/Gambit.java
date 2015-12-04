@@ -14,6 +14,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -49,6 +51,8 @@ public class Gambit extends JFrame
 	private Color applicationText = new Color(240, 186, 0);
 	
 	private User user;
+	private Dealer dealer;
+	private Deck deck;
 	
 	/**
 	 * This is the main entry point to the Gambit game.
@@ -74,6 +78,20 @@ public class Gambit extends JFrame
 		this.setBounds(100, 100, 750, 550);
 		this.getContentPane().setBackground(applicationBackground);
 		this.setTitle(this.appName);
+		
+		this.addWindowListener(new WindowListener(){
+			public void windowOpened(WindowEvent e){ }
+			public void windowClosed(WindowEvent e){ }
+			public void windowIconified(WindowEvent e){ }
+			public void windowDeiconified(WindowEvent e){ }
+			public void windowActivated(WindowEvent e){ }
+			public void windowDeactivated(WindowEvent e){ }
+
+			public void windowClosing(WindowEvent e){
+				if (user != null)
+					user.save();				
+			}
+		});
 		
 		// Get the Application Label
 		JLabel lblGame = new JLabel(this.appName.toUpperCase());
@@ -153,6 +171,12 @@ public class Gambit extends JFrame
 	private void setupGame()
 	{
 		user = new User(this.getUserName());
+		user.load();
+		
+		dealer = new Dealer();
+		deck = new Deck();
+		deck.createDeck();
+		deck.shuffle();
 		
 		createPlayerControlPanel();
 		createResultPanel();
@@ -167,13 +191,40 @@ public class Gambit extends JFrame
 	
 	public void createPlayerControlPanel()
 	{
-		playerControlPanel = new PlayerControlPanel();
+		playerControlPanel = new PlayerControlPanel(user.getBank());
 		playerControlPanel.setPanelColor(applicationBackground);
 		playerControlPanel.setTextColor(applicationText);
 		gameArea.add(playerControlPanel, BorderLayout.WEST);
 		
+		playerControlPanel.getPlaceBet().addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int amount = playerControlPanel.getSelectedBetValue();
+				
+				if (amount > 0)
+				{
+					// Set Bet
+					user.placeBet(amount);
+					lblFooter.setText("Current Bet: $" + amount);
+					playerControlPanel.setBankLabel(user.getBank());
+					playerControlPanel.getPlaceBet().setEnabled(false);
+					
+					// Deal hand
+					user.hit(deck);
+					dealer.hit(deck);
+					user.hit(deck);
+					dealer.hit(deck);
+					
+					System.out.println(user.currentHand + ":: " + user.getHandValue());
+					System.out.println(dealer.currentHand + ":: " + user.getHandValue());
+					
+				}
+				
+			}
+		});
+		
 		playerControlPanel.getQuit().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				user.save();
 				System.exit(0);
 			}
 		});

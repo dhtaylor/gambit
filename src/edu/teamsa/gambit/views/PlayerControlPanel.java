@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.Border;
 
+
 @SuppressWarnings("serial")
 public class PlayerControlPanel extends JPanel
 {
@@ -44,7 +45,9 @@ public class PlayerControlPanel extends JPanel
 	private JButton stay;
 	private JButton quit;
 	
-	public PlayerControlPanel()
+	private int bankAmount;
+	
+	public PlayerControlPanel(int bankAmount)
 	{
 		super();
 		this.setLayout(new GridLayout(0,1,0,0));
@@ -52,7 +55,8 @@ public class PlayerControlPanel extends JPanel
 		this.setPreferredSize(this.panelDimension);
 		this.setBackground(this.panelColor);
 
-		this.lblBank = new JLabel("Bank: $0");
+		this.bankAmount = bankAmount;
+		this.lblBank = new JLabel("Bank: $" + bankAmount);
 		this.lblBank.setFont(new Font("arial", Font.BOLD, 14));
 		this.lblBank.setPreferredSize(this.labelDimension);
 		this.setForeground(this.textColor);
@@ -69,7 +73,7 @@ public class PlayerControlPanel extends JPanel
 		this.fifty = new JRadioButton("$50");
 		this.fifty.setForeground(this.textColor);
 		
-		this.max = new JRadioButton("Max");
+		this.max = new JRadioButton("All In!");
 		this.max.setForeground(this.textColor);
 		
 		this.buttonGroup = new ButtonGroup();
@@ -142,6 +146,12 @@ public class PlayerControlPanel extends JPanel
 		return this.quit;
 	}
 	
+	public void setBankLabel(int bankAmount)
+	{
+		this.bankAmount = bankAmount;
+		lblBank.setText("Bank: $" + bankAmount);
+	}
+	
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
@@ -171,4 +181,23 @@ public class PlayerControlPanel extends JPanel
 
 	}
 	
+	public int getSelectedBetValue()
+	{
+		if (five.isSelected())
+			return 5;
+		
+		if (ten.isSelected())
+			return 10;
+		
+		if (twenty.isSelected())
+			return 20;
+		
+		if (fifty.isSelected())
+			return 50;
+		
+		if (max.isSelected())
+			return this.bankAmount;
+		
+		return 0;
+	}
 }
