@@ -9,7 +9,12 @@ import javax.swing.ImageIcon;
 public class Deck {
 	
 	List<Card> deck = new ArrayList<Card>();
+	int deckIndex = 0;
 	
+	/**
+	 * createDeck will add all 52 standard card values to the deck ArrayList. This method must be run at least once before 
+	 * before the hands are dealt. 
+	 */
 	public void createDeck(){
 		Suit suit = Suit.CLUB;
 		deck.add(new Card(suit,FaceValue.KING,new ImageIcon("images/king_club.jpg")));
@@ -67,11 +72,16 @@ public class Deck {
 		deck.add(new Card(suit,FaceValue.THREE,new ImageIcon("images/3_spade.jpg")));
 		deck.add(new Card(suit,FaceValue.TWO,new ImageIcon("images/2_spade.jpg")));
 		deck.add(new Card(suit,FaceValue.ACE,new ImageIcon("images/A_spade.jpg")));
-		
 	}
 	
+	/**
+	 * returns the card at position deckIndex(for deckIndex at the time of call). Increments deckIndex, then returns
+	 * deck.get(deckIndex - 1).
+	 * @return returns the card at the "top" of the deck. indicated by the deckIndex at the time the method is called. 
+	 */
 	public Card getTopCard(){
-		return null;
+		deckIndex++;
+		return deck.get(deckIndex - 1);
 	}
 	
 	public void shuffle(){

@@ -1,8 +1,12 @@
 package edu.teamsa.gambit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
 	
-	Hand currentHand;
+	List<Card> currentHand = new ArrayList<Card>();
+	
 	Player(){
 		//todo determine if we need a constructor here.
 	}
@@ -18,12 +22,13 @@ public class Player {
 	public void blackJack(){
 		//todo blackjack logic
 	}
-	
-	private boolean evalHand(Hand hand){
-		//todo evalHand logic
-		for(Card card : this.currentHand){
-			//todo something with each card. I think.
+		
+	public int getHandValue(){
+		int handValue = 0;
+		for(Card c : currentHand){
+			handValue = handValue + c.getCardValue();
 		}
+		return handValue;
 	}
 	
 	/**
@@ -35,9 +40,9 @@ public class Player {
 	 * now be less than 21) and continue normally. 
 	 */
 	private void checkAces(){
-		for(Card card : this.currentHand){
-			if(this.currentHand.getCurrentValue() > 21){
-				if(card.getCardValue == 11){
+		for(Card card : currentHand){
+			if(this.getHandValue() > 21){
+				if(card.getCardValue() == 11){
 					card.setCardValue(1);
 				}
 			}
