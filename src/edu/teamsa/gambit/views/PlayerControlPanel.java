@@ -6,21 +6,25 @@
  *
  */
 
-package edu.teamsa.gambit;
+package edu.teamsa.gambit.views;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 @SuppressWarnings("serial")
 public class PlayerControlPanel extends JPanel
 {
+	private JLabel lblBank;
 	private ButtonGroup buttonGroup;
 	private JRadioButton five;
 	private JRadioButton ten;
@@ -37,11 +41,16 @@ public class PlayerControlPanel extends JPanel
 	
 	public PlayerControlPanel()
 	{
-		this.setLayout(new FlowLayout());
+		super();
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		this.setPreferredSize(new Dimension(100, 550));
 		this.setBackground(this.panelColor);
 
+		this.lblBank = new JLabel("Bank: $");
+		this.lblBank.setFont(new Font("arial", Font.BOLD, 14));
+		this.setForeground(this.textColor);
+		
 		this.five = new JRadioButton("$5");
 		this.five.setForeground(this.textColor);
 		
@@ -68,6 +77,7 @@ public class PlayerControlPanel extends JPanel
 		this.hit = new JButton("Hit");
 		this.stay = new JButton("Stay");
 		
+		this.add(this.lblBank);
 		this.add(this.five);
 		this.add(this.ten);
 		this.add(this.twenty);
@@ -118,25 +128,26 @@ public class PlayerControlPanel extends JPanel
 	{
 		return stay;
 	}
-	
-	public Color getPanelColor()
-	{
-		return this.panelColor;
-	}
 
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
-	}
-
-	public Color getTextColor()
-	{
-		return this.textColor;
+		this.setBackground(this.panelColor);
 	}
 
 	public void setTextColor(Color c)
 	{
 		this.textColor = c;
+
+		Component[] components = this.getComponents();
+		
+		for (int i = 0; i < components.length; i++)
+		{
+			if (!(components[i] instanceof JButton))
+				components[i].setForeground(this.textColor);
+			
+		}
+
 	}
 	
 }

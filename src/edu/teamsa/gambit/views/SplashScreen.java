@@ -6,8 +6,9 @@
  *
  */
 
-package edu.teamsa.gambit;
+package edu.teamsa.gambit.views;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -22,7 +23,8 @@ public class SplashScreen extends JPanel
 	
 	public SplashScreen()
 	{
-		this.setSize(10, 10);
+		super();
+		this.setPreferredSize(new Dimension(100, 50));
 		this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 		this.setOpaque(false);
 		this.setLayout(new GridLayout(4, 1, 10, 10));

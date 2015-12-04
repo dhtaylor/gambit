@@ -10,6 +10,7 @@ package edu.teamsa.gambit;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +18,13 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import edu.teamsa.gambit.views.CardPanel;
+import edu.teamsa.gambit.views.PlayerControlPanel;
+import edu.teamsa.gambit.views.ResultPanel;
+import edu.teamsa.gambit.views.SplashScreen;
 
 /**
  * This is the main class for the Gambit application.
@@ -32,11 +39,16 @@ public class Gambit extends JFrame
 	private String appName = "Gambit";
 	private JPanel gameArea;
 	private PlayerControlPanel playerControlPanel;
-	private JPanel cardPanel;
-	private JPanel resultPanel;
+	private CardPanel cardPanel;
+	private ResultPanel resultPanel;
 	
-	private Color applicationBackground = new Color(7, 99, 36);
+	private JLabel lblFooter;
+	
+	private Color applicationBackground = new Color(1, 28, 71);
+//	private Color applicationBackground = new Color(7, 99, 36);
 	private Color applicationText = new Color(240, 186, 0);
+	
+	private User user;
 	
 	/**
 	 * This is the main entry point to the Gambit game.
@@ -59,7 +71,7 @@ public class Gambit extends JFrame
 		// Set up the JFrame
 		super();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 550, 550);
+		this.setBounds(100, 100, 650, 550);
 		this.getContentPane().setBackground(applicationBackground);
 		this.setTitle(this.appName);
 		
@@ -76,6 +88,13 @@ public class Gambit extends JFrame
 		gameArea.setLayout(new BorderLayout());
 		gameArea.setBackground(applicationBackground);
 		this.getContentPane().add(gameArea, BorderLayout.CENTER);
+		
+		lblFooter = new JLabel("Current Bet: $0");
+		lblFooter.setHorizontalAlignment(JLabel.CENTER);
+		lblFooter.setFont(new Font("Garamond", Font.BOLD, 36));
+		lblFooter.setForeground(applicationText);
+		lblFooter.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+		//this.getContentPane().add(lblFooter, BorderLayout.SOUTH);
 		
 	}
 	
@@ -94,6 +113,18 @@ public class Gambit extends JFrame
 	
 	public void displaySplash()
 	{
+		// Get Spacers to center the buttons
+		JPanel leftSpacer = new JPanel();
+		leftSpacer.setPreferredSize(new Dimension(150, 100));
+		leftSpacer.setOpaque(false);
+		
+		JPanel rightSpacer = new JPanel();
+		rightSpacer.setPreferredSize(new Dimension(150, 100));
+		rightSpacer.setOpaque(false);
+
+		gameArea.add(leftSpacer, BorderLayout.WEST);
+		gameArea.add(rightSpacer, BorderLayout.EAST);
+
 		// Get the Splash Screen to display
 		SplashScreen splash = new SplashScreen();
 		gameArea.add(splash, BorderLayout.CENTER);
@@ -121,10 +152,17 @@ public class Gambit extends JFrame
 	
 	private void setupGame()
 	{
+		user = new User(this.getUserName());
+		
 		createPlayerControlPanel();
 		createResultPanel();
 		createCardPanel();
-		
+		gameArea.validate();
+		gameArea.repaint();
+
+		this.getContentPane().add(lblFooter, BorderLayout.SOUTH);
+		this.validate();
+		this.repaint();
 	}
 	
 	public void createPlayerControlPanel()
@@ -138,18 +176,40 @@ public class Gambit extends JFrame
 	
 	public void createResultPanel()
 	{
-		resultPanel = new JPanel();
-		
-		JLabel label = new JLabel("This is a long result test.");
-		resultPanel.add(label);
-		
+		resultPanel = new ResultPanel();
+		resultPanel.setPanelColor(applicationBackground);
+		resultPanel.setTextColor(applicationText);
+		resultPanel.setPlayer(user.pName);
 		gameArea.add(resultPanel, BorderLayout.EAST);
 	
 	}
 	
 	public void createCardPanel()
 	{
-		cardPanel = new JPanel();
+		cardPanel = new CardPanel();
+		//cardPanel.setPanelColor(applicationBackground);
 		gameArea.add(cardPanel, BorderLayout.CENTER);
 	}
+	
+	public String getUserName()
+	{
+		String userName = null;
+		
+		while(userName == null || userName.equals(""))
+		{
+			userName = (String)JOptionPane.showInputDialog(
+	                this,
+	                "Please Enter Your Name:",
+	                "User Name Input",
+	                JOptionPane.PLAIN_MESSAGE,
+	                null,
+	                null,
+	                null);
+
+		}
+
+		return userName;
+		
+	}
+	
 }
