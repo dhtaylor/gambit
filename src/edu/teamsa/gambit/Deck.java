@@ -87,5 +87,13 @@ public class Deck {
 	public void shuffle(){
 		Collections.shuffle(deck);
 	}
+	
+	/**
+	 * addCard is a testing method which allows us to add specific cards to the deck. 
+	 * @param c the card to add to the deck.
+	 */
+	public void addCard(Card c){
+		deck.add(c);
+	}
 
 }

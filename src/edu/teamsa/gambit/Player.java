@@ -6,11 +6,7 @@ import java.util.List;
 public class Player {
 	
 	List<Card> currentHand = new ArrayList<Card>();
-	
-	Player(){
-		//todo determine if we need a constructor here.
-	}
-	
+		
 	public void hit(Deck deck){
 		currentHand.add(deck.getTopCard());
 	}
@@ -33,6 +29,10 @@ public class Player {
 	
 	public Card getHandCard(int handIndex){
 		return currentHand.get(handIndex);
+	}
+	
+	public void clearHand(){
+		currentHand.removeAll(currentHand);
 	}
 	
 	/**
