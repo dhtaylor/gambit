@@ -95,5 +95,8 @@ public class Deck {
 	public void addCard(Card c){
 		deck.add(c);
 	}
+	public Card getCard(int index){
+		return deck.get(index);
+	}
 
 }
