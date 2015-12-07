@@ -21,7 +21,8 @@ public class CardPanel extends JPanel
 {
 	private Border defaultBorder = BorderFactory.createEmptyBorder(10,10,10,10);
 	private Color panelColor = new Color(7, 99, 36);
-	
+	//I created the user panel and dealer panel, added 5 placeholders for cards, not sure if this is how we want to do it or not
+	//it would maybe be better to do a flowlayout centered and add the card places dynamically but I'm not that smart! -Britt
 	private JPanel userCards = new JPanel();
 	private JPanel dealerCards = new JPanel();
 	private JLabel userCard1 = new JLabel();
