@@ -48,6 +48,8 @@ public class Gambit extends JFrame
 	
 	private Color applicationBackground = new Color(1, 28, 71);
 	private Color applicationText = new Color(240, 186, 0);
+	private Color applicationWarning = new Color(168, 44, 20);
+	
 	
 	private User user;
 	private Dealer dealer;
@@ -216,7 +218,6 @@ public class Gambit extends JFrame
 					return;
 				}
 				
-				printHands();
 			}
 
 		});
@@ -232,6 +233,9 @@ public class Gambit extends JFrame
 				cardPanel.getUserCards().removeAll();
 				cardPanel.getUserCards().validate();
 				cardPanel.getUserCards().repaint();
+				
+				lblFooter.setText("Current Bet: $0");
+				lblFooter.setForeground(applicationText);
 				
 				if (dealer.checkTooFewCards(deck));
 					deck = dealer.getDeck();
@@ -280,8 +284,6 @@ public class Gambit extends JFrame
 						
 						cardPanel.getDealerCards().add(c);
 					}
-					
-					printHands();
 					
 				}
 				
@@ -336,24 +338,37 @@ public class Gambit extends JFrame
 					return;
 				}
 				
-				printHands();
-				
-				
+				if (dealer.getHandValue() == user.getHandValue())
+				{
+					user.gameResults("Push");
+					lblFooter.setText("Push!");
+					lblFooter.setForeground(applicationWarning);
+				}
+
 				if (dealer.getHandValue() > user.getHandValue())
 				{
-					System.out.println("Dealer Wins!");
+					user.gameResults("Dealer");
+					lblFooter.setText("House Wins!");
+					lblFooter.setForeground(applicationWarning);
 				}
 				else
 				{
-					System.out.println("User Wins!");
 					user.gameResults("Player");
+					lblFooter.setText("Player Wins!");
+					lblFooter.setForeground(applicationWarning);
 				}
 
-				lblFooter.setText("Current Bet: $0");
 				playerControlPanel.getPlaceBet().setEnabled(true);
 				playerControlPanel.getHit().setEnabled(false);
 				playerControlPanel.getStay().setEnabled(false);
-				playerControlPanel.setBankLabel(user.getBank());	
+				playerControlPanel.setBankLabel(user.getBank());
+				
+				resultPanel.getLblDWins().setText(String.format("Wins: %d", user.getLost()));
+				resultPanel.getLblDLosses().setText(String.format("Losses: %d", user.getWins()));
+				resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
+				resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
+				resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
+				
 			}
 		});
 	}
@@ -394,43 +409,28 @@ public class Gambit extends JFrame
 		return userName;
 		
 	}
-
-	public void printHands(){
-		System.out.println("Player:: " + user.currentHand + ":: " + user.getHandValue());
-		System.out.println("Dealer:: " + dealer.currentHand + ":: " + dealer.getHandValue());
-		
-
-	}
 	
 	private void bustUser()
 	{
-		lblFooter.setText("Current Bet: $0");
-		user.clearHand();
-		dealer.clearHand();
+		user.gameResults("Dealer");
+		lblFooter.setText("You Busted! House Wins!");
+		lblFooter.setForeground(applicationWarning);
 		playerControlPanel.getPlaceBet().setEnabled(true);
 		playerControlPanel.getHit().setEnabled(false);
 		playerControlPanel.getStay().setEnabled(false);
 
-		JOptionPane.showMessageDialog(
-				  null
-				, String.format("You Busted! House Wins!")
-				, "Bank Exceeded"
-				, JOptionPane.WARNING_MESSAGE
-		);
-		
 		return;
 	}
 
 	private void bustDealer()
 	{
 		user.gameResults("Player");
-		lblFooter.setText("Current Bet: $0");
+		lblFooter.setText("Dealer Busts!");
+		lblFooter.setForeground(applicationWarning);
 		playerControlPanel.getPlaceBet().setEnabled(true);
 		playerControlPanel.getHit().setEnabled(false);
 		playerControlPanel.getStay().setEnabled(false);
 		playerControlPanel.setBankLabel(user.getBank());
-		
-		System.out.println("Dealer Busts!");
 		
 		return;
 	}

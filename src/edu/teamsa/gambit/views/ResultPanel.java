@@ -53,6 +53,37 @@ public class ResultPanel extends JPanel
 		
 	}
 	
+	
+	public JLabel getLblDWins()
+	{
+		return this.lblDWins;
+	}
+
+
+	public JLabel getLblDLosses()
+	{
+		return this.lblDLosses;
+	}
+
+
+	public JLabel getLblPWins()
+	{
+		return this.lblPWins;
+	}
+
+
+	public JLabel getLblPLosses()
+	{
+		return this.lblPLosses;
+	}
+
+
+	public JLabel getLblPWinnings()
+	{
+		return this.lblPWinnings;
+	}
+
+
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
