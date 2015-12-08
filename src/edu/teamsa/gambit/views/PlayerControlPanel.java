@@ -203,4 +203,9 @@ public class PlayerControlPanel extends JPanel
 		
 		return 0;
 	}
+	
+	public void clearSelectedBetValue()
+	{
+		this.buttonGroup.clearSelection();
+	}
 }
