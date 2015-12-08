@@ -88,6 +88,9 @@ public class PlayerControlPanel extends JPanel
 		this.stay = new JButton("Stay");
 		this.quit = new JButton("Quit");
 		
+		this.hit.setEnabled(false);
+		this.stay.setEnabled(false);
+		
 		this.add(this.lblBank);
 		this.add(this.five);
 		this.add(this.ten);

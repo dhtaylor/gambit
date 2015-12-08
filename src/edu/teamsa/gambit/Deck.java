@@ -99,4 +99,8 @@ public class Deck {
 		return deck.get(index);
 	}
 
+	public int size(){
+		return this.deck.size() - this.deckIndex;
+	}
+	
 }
