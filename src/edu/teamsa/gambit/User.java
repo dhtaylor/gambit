@@ -17,8 +17,16 @@ public class User extends Player {
 	public int currentBet;
 	/** Value of the user's bank */
 	public int bank;
+	/**  Number of games won by the player */
+	public int wins;
+	/**  Number of games lost by the player */
+	public int lost;
+	/**  Amount of money won by the player */
+	public int moneyWon;
+	/**  Amount of money lost by the player */
+	public int moneyLost;
 	/** Name of the file with the saved user information */
-	private String filename = "Gambit.bj";
+	private String filename;
 	
 	/**
 	 * Constructor for the User class - sets the name of the user
@@ -27,6 +35,7 @@ public class User extends Player {
 	public User(String name)
 	{
 		this.pName = name;
+		this.filename = (name + ".gambit").toLowerCase();
 	}
 	
 	/**
@@ -66,10 +75,23 @@ public class User extends Player {
 		if (result == "Blackjack")
 		{
 			bank = bank + ((currentBet * 2) * 2);
+			wins ++;
+			moneyWon = moneyWon + currentBet;
 		}
 		if (result == "Player")
 		{
 			bank = bank + (currentBet * 2);
+			wins ++;
+			moneyWon = moneyWon + currentBet;
+		}
+		if (result == "Dealer")
+		{
+			lost ++;
+			moneyLost = moneyLost + currentBet;
+		}
+		if (result == "Push")
+		{
+			bank = bank + currentBet;
 		}
 		if (bank <= 0)
 		{
@@ -89,6 +111,33 @@ public class User extends Player {
 	}
 	
 	/**
+	 * 
+	 * @return wins - number of games won by the user
+	 */
+	public int getWins()
+	{
+		return this.wins;
+	}
+	
+	/**
+	 * 
+	 * @return lost - number of games lost by the user
+	 */
+	public int getLost()
+	{
+		return this.lost;
+	}
+	
+	/**
+	 * 
+	 * @return (moneyWon - moneyLost) - returns the net winning/losses by the user
+	 */
+	public int getNetWinnings()
+	{
+		return moneyWon - moneyLost;
+	}
+	
+	/**
 	 * Saves the user's name and bank value out to a a file called Gambit.bj
 	 */
 	public void save()
@@ -97,6 +146,10 @@ public class User extends Player {
     	{
     		outputObj.writeObject(pName);
 			outputObj.writeObject(bank);
+			outputObj.writeObject(wins);
+			outputObj.writeObject(lost);
+			outputObj.writeObject(moneyWon);
+			outputObj.writeObject(moneyLost);
     		outputObj.close();
     		
     	} catch (FileNotFoundException e)
@@ -118,10 +171,14 @@ public class User extends Player {
     	{
     		pName = (String) inputObj.readObject();
     		bank = (int) inputObj.readObject();
+    		wins = (int) inputObj.readObject();
+    		lost = (int) inputObj.readObject();
+    		moneyWon = (int) inputObj.readObject();
+    		moneyLost = (int) inputObj.readObject();
     		inputObj.close();
     	}catch (FileNotFoundException e)
     	{
-    		this.save();
+    		createNewUser();
     	}catch (IOException e)
     	{
     		e.printStackTrace();
@@ -129,5 +186,19 @@ public class User extends Player {
     	{
     		e.printStackTrace();
     	}
+	}
+	
+	/**
+	 * If there is no file found for the user - this method setups the user with default vaules
+	 * and saves/creates the file
+	 */
+	public void createNewUser()
+	{
+		setBank();
+		this.wins = 0;
+		this.lost = 0;
+		this.moneyWon = 0;
+		this.moneyLost = 0;
+		this.save();
 	}
 }
