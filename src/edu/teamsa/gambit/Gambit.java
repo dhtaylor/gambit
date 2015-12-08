@@ -196,7 +196,20 @@ public class Gambit extends JFrame
 			public void actionPerformed(ActionEvent e){
 				user.hit(deck);
 				user.checkAces();
+
+				cardPanel.getUserCards().removeAll();
 				
+				for (Card c : user.currentHand)
+				{
+					if (user.currentHand.indexOf(c) == (user.currentHand.size() - 1))
+						c.flip();
+					
+					cardPanel.getUserCards().add(c);
+				}
+
+				cardPanel.getUserCards().validate();
+				cardPanel.getUserCards().repaint();
+
 				if (user.getHandValue() > 21)
 				{
 					bustUser();
@@ -210,6 +223,16 @@ public class Gambit extends JFrame
 		
 		playerControlPanel.getPlaceBet().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				dealer.clearHand();
+				cardPanel.getDealerCards().removeAll();
+				cardPanel.getDealerCards().validate();
+				cardPanel.getDealerCards().repaint();
+				
+				user.clearHand();
+				cardPanel.getUserCards().removeAll();
+				cardPanel.getUserCards().validate();
+				cardPanel.getUserCards().repaint();
+				
 				if (dealer.checkTooFewCards(deck));
 					deck = dealer.getDeck();
 				
@@ -239,15 +262,24 @@ public class Gambit extends JFrame
 					playerControlPanel.clearSelectedBetValue();
 					
 					// Deal hand
-					Card c1 = user.hit(deck);
-					c1.flip();
-					cardPanel.getUserCards().add(c1);
-					
+					user.hit(deck);
 					dealer.hit(deck);
 					user.hit(deck);
 					dealer.hit(deck);
 					
-					System.out.println(deck.size());
+					for (Card c : user.currentHand)
+					{
+						c.flip();
+						cardPanel.getUserCards().add(c);
+					}
+
+					for (Card c : dealer.currentHand)
+					{
+						if (dealer.currentHand.indexOf(c) == 0)
+							c.flip();
+						
+						cardPanel.getDealerCards().add(c);
+					}
 					
 					printHands();
 					
@@ -276,9 +308,28 @@ public class Gambit extends JFrame
 					if (dealer.getHandValue() < dealer.getLimit())
 						dealer.hit(deck);
 					
+					cardPanel.getDealerCards().removeAll();
+					cardPanel.getDealerCards().validate();
+					cardPanel.getDealerCards().repaint();
+					
+					for (Card c : dealer.currentHand)
+						cardPanel.getDealerCards().add(c);
+					
 				}
 				while(dealer.getHandValue() >= dealer.getLimit() && !dealer.isHardLimit());
 
+				cardPanel.getDealerCards().removeAll();
+				cardPanel.getDealerCards().validate();
+				cardPanel.getDealerCards().repaint();
+				
+				for (Card c : dealer.currentHand)
+				{
+					if (dealer.currentHand.indexOf(c) > 0)
+						c.flip();
+					
+					cardPanel.getDealerCards().add(c);
+				}
+				
 				if (dealer.getHandValue() > 21)
 				{
 					bustDealer();
@@ -298,9 +349,6 @@ public class Gambit extends JFrame
 					user.gameResults("Player");
 				}
 
-				dealer.clearHand();
-				user.clearHand();
-				
 				lblFooter.setText("Current Bet: $0");
 				playerControlPanel.getPlaceBet().setEnabled(true);
 				playerControlPanel.getHit().setEnabled(false);
@@ -377,8 +425,6 @@ public class Gambit extends JFrame
 	{
 		user.gameResults("Player");
 		lblFooter.setText("Current Bet: $0");
-		user.clearHand();
-		dealer.clearHand();
 		playerControlPanel.getPlaceBet().setEnabled(true);
 		playerControlPanel.getHit().setEnabled(false);
 		playerControlPanel.getStay().setEnabled(false);
