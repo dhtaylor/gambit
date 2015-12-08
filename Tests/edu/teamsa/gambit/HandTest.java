@@ -27,6 +27,7 @@ public class HandTest {
 	public void testGetCurrentValue() {
 		int expected = 13;
 		int actual = testHand.getCurrentValue();
+		assertEquals(expected, actual);
 	}
 
 }
