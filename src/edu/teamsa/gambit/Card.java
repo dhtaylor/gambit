@@ -11,7 +11,7 @@ public class Card extends JLabel
 	public FaceValue faceValue;
 	public int cardValue;
 	public ImageIcon front;
-	public ImageIcon back = new ImageIcon("/gambit/images/back.jpg");
+	public ImageIcon back = new ImageIcon("images/back.jpg");
 	
 	Card(Suit suit, FaceValue faceValue, ImageIcon front){
 		this.suit = suit;
@@ -81,7 +81,10 @@ public class Card extends JLabel
 	
 	public void flip()
 	{
-		if (this.getIcon().equals(this.back))
+		String iconImage = this.getIcon().toString();
+		String backImage = this.back.toString();
+		
+		if (iconImage.equals(backImage))
 			this.setIcon(this.front);
 		else
 			this.setIcon(this.back);
