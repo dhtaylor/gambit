@@ -54,26 +54,37 @@ public class CardPanel extends JPanel
 		this.panelColor = c;
 		this.setBackground(this.panelColor);
 	}
+	
 	public JPanel createUserPanel(){
 		userCards.setBackground(panelColor);
 		userCards.setLayout(new GridLayout(1, 5));
-		userCards.add(userCard1);
-		userCards.add(userCard2);
-		userCards.add(userCard3);
-		userCards.add(userCard4);
-		userCards.add(userCard5);
+//		userCards.add(userCard1);
+//		userCards.add(userCard2);
+//		userCards.add(userCard3);
+//		userCards.add(userCard4);
+//		userCards.add(userCard5);
 		return userCards;
 
 	}
 	public JPanel createDealerPanel(){
 		dealerCards.setBackground(panelColor);
 		dealerCards.setLayout(new GridLayout(1, 5));
-		dealerCards.add(dealerCard1);
-		dealerCards.add(dealerCard2);
-		dealerCards.add(dealerCard3);
-		dealerCards.add(dealerCard4);
-		dealerCards.add(dealerCard5);
+//		dealerCards.add(dealerCard1);
+//		dealerCards.add(dealerCard2);
+//		dealerCards.add(dealerCard3);
+//		dealerCards.add(dealerCard4);
+//		dealerCards.add(dealerCard5);
 		return dealerCards;
 
+	}
+	
+	public JPanel getUserCards()
+	{
+		return this.userCards;
+	}
+
+	public JPanel getDealerCards()
+	{
+		return this.dealerCards;
 	}
 }

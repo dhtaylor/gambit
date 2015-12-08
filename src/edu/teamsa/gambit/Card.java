@@ -1,8 +1,11 @@
 package edu.teamsa.gambit;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
-public class Card {
+@SuppressWarnings("serial")
+public class Card extends JLabel
+{
 
 	public Suit suit;
 	public FaceValue faceValue;
@@ -15,6 +18,7 @@ public class Card {
 		this.faceValue = faceValue;
 		this.cardValue = faceValue.getCardValue();
 		this.front = front;
+		this.setIcon(this.back);
 	}
 	
 	public void setCardValue(int value){
@@ -73,5 +77,14 @@ public class Card {
 		if (suit != other.suit)
 			return false;
 		return true;
+	}
+	
+	public void flip()
+	{
+		if (this.getIcon().equals(this.back))
+			this.setIcon(this.front);
+		else
+			this.setIcon(this.back);
+
 	}
 }

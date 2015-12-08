@@ -7,8 +7,10 @@ public class Player {
 	
 	List<Card> currentHand = new ArrayList<Card>();
 		
-	public void hit(Deck deck){
-		currentHand.add(deck.getTopCard());
+	public Card hit(Deck deck){
+		Card card = deck.getTopCard();
+		currentHand.add(card);
+		return card;
 	}
 	
 	public void stay(){
