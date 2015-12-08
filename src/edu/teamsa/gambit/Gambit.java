@@ -285,6 +285,20 @@ public class Gambit extends JFrame
 						cardPanel.getDealerCards().add(c);
 					}
 					
+					if (user.getHandValue() == 21)
+					{
+						user.gameResults("Blackjack");
+						lblFooter.setText("Player Wins!");
+						lblFooter.setForeground(applicationWarning);
+					}
+
+					if (dealer.getHandValue() == 21)
+					{
+						user.gameResults("Dealer");
+						lblFooter.setText("House Wins!");
+						lblFooter.setForeground(applicationWarning);
+					}
+					
 				}
 				
 			}
@@ -318,7 +332,7 @@ public class Gambit extends JFrame
 						cardPanel.getDealerCards().add(c);
 					
 				}
-				while(dealer.getHandValue() >= dealer.getLimit() && !dealer.isHardLimit());
+				while(dealer.getHandValue() <= dealer.getLimit() && !dealer.isHardLimit());
 
 				cardPanel.getDealerCards().removeAll();
 				cardPanel.getDealerCards().validate();
