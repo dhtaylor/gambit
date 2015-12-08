@@ -363,8 +363,8 @@ public class Gambit extends JFrame
 				playerControlPanel.getStay().setEnabled(false);
 				playerControlPanel.setBankLabel(user.getBank());
 				
-				resultPanel.getLblDWins().setText(String.format("Wins: %d", user.getLost()));
-				resultPanel.getLblDLosses().setText(String.format("Losses: %d", user.getWins()));
+				resultPanel.getLblDWins().setText(String.format("Wins: %d", user.getWins()));
+				resultPanel.getLblDLosses().setText(String.format("Losses: %d", user.getLost()));
 				resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
 				resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
 				resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
