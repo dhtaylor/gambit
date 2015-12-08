@@ -31,7 +31,7 @@ public class Deck {
 		deck.add(new Card(suit,FaceValue.TWO,new ImageIcon("images/2_club.jpg")));
 		deck.add(new Card(suit,FaceValue.ACE,new ImageIcon("images/A_club.jpg")));
 		suit = Suit.DIAMOND;
-		deck.add(new Card(suit,FaceValue.KING,new ImageIcon("images/king_diamon.jpg")));
+		deck.add(new Card(suit,FaceValue.KING,new ImageIcon("images/king_diamond.jpg")));
 		deck.add(new Card(suit,FaceValue.QUEEN,new ImageIcon("images/queen_diamond.jpg")));
 		deck.add(new Card(suit,FaceValue.JACK,new ImageIcon("images/jack_diamond.jpg")));
 		deck.add(new Card(suit,FaceValue.TEN,new ImageIcon("images/10_diamond.jpg")));
