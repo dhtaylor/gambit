@@ -9,39 +9,31 @@
 package edu.teamsa.gambit.views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
 public class CardPanel extends JPanel
 {
+	private Dimension panelDimension = new Dimension(340, 550);
 	private Border defaultBorder = BorderFactory.createEmptyBorder(10,10,10,10);
 	private Color panelColor = new Color(7, 99, 36);
 	//I created the user panel and dealer panel, added 5 placeholders for cards, not sure if this is how we want to do it or not
 	//it would maybe be better to do a flowlayout centered and add the card places dynamically but I'm not that smart! -Britt
 	private JPanel userCards = new JPanel();
 	private JPanel dealerCards = new JPanel();
-	private JLabel userCard1 = new JLabel();
-	private JLabel userCard2 = new JLabel();
-	private JLabel userCard3 = new JLabel();
-	private JLabel userCard4 = new JLabel();
-	private JLabel userCard5 = new JLabel();
-	private JLabel dealerCard1 = new JLabel();
-	private JLabel dealerCard2 = new JLabel();
-	private JLabel dealerCard3 = new JLabel();
-	private JLabel dealerCard4 = new JLabel();
-	private JLabel dealerCard5 = new JLabel();
 
 	
 	public CardPanel()
 	{
 		super();
 		this.setLayout(new GridLayout(2, 1));
-		this.setBorder(defaultBorder); 
+		this.setBorder(defaultBorder);
+		this.setPreferredSize(this.panelDimension);
 		this.setBackground(panelColor);
 		
 		this.add(createDealerPanel());
@@ -57,23 +49,17 @@ public class CardPanel extends JPanel
 	
 	public JPanel createUserPanel(){
 		userCards.setBackground(panelColor);
-		userCards.setLayout(new GridLayout(1, 5));
-//		userCards.add(userCard1);
-//		userCards.add(userCard2);
-//		userCards.add(userCard3);
-//		userCards.add(userCard4);
-//		userCards.add(userCard5);
+		userCards.setLayout(new GridLayout(1, 5, 0 , 0));
+		userCards.setBorder(defaultBorder);
+
 		return userCards;
 
 	}
 	public JPanel createDealerPanel(){
 		dealerCards.setBackground(panelColor);
-		dealerCards.setLayout(new GridLayout(1, 5));
-//		dealerCards.add(dealerCard1);
-//		dealerCards.add(dealerCard2);
-//		dealerCards.add(dealerCard3);
-//		dealerCards.add(dealerCard4);
-//		dealerCards.add(dealerCard5);
+		dealerCards.setLayout(new GridLayout(1, 5, 0, 0));
+		dealerCards.setBorder(defaultBorder);
+
 		return dealerCards;
 
 	}
