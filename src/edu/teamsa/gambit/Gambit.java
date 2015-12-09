@@ -396,6 +396,12 @@ public class Gambit extends JFrame
 		resultPanel.setPanelColor(applicationBackground);
 		resultPanel.setTextColor(applicationText);
 		resultPanel.setPlayer(user.pName);
+		
+		// Displays the user's stats from the saved file if there was any from a previous game/save
+		resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
+		resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
+		resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
+		
 		gameArea.add(resultPanel, BorderLayout.EAST);
 	
 	}
