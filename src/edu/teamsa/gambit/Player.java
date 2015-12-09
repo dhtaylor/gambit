@@ -37,13 +37,28 @@ public class Player {
 	 * 21 it will set the current card's value to 1. the loop will then go to the next card, check the hand value (which should
 	 * now be less than 21) and continue normally. 
 	 */
-	public void checkAces(){
-		for(Card card : currentHand){
-			if(this.getHandValue() > 21){
-				if(card.getCardValue() == 11){
+	public void checkAces(int limit)
+	{
+		for(Card card : currentHand)
+		{
+			if(this.getHandValue() > limit)
+			{
+				if(card.getCardValue() == 11)
 					card.setCardValue(1);
-				}
 			}
+			
 		}
+		
 	}
+
+	/**
+	 * This method overloads the main checkAces method and passes in a limit of 21,
+	 * which we want as the default behavior for the user.
+	 * 
+	 */
+	public void checkAces()
+	{
+		checkAces(21);
+	}
+
 }

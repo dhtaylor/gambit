@@ -25,9 +25,9 @@ public class Dealer extends Player {
 		Card card2 = new Card(Suit.SPADE,FaceValue.TWO,new ImageIcon("images/2_spade.jpg"));
 		Card card1 = new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg"));
 		
-		deck.addCard(card9);
 		deck.addCard(card1);
-		deck.addCard(card8);
+		deck.addCard(card9);
+		deck.addCard(cardK);
 		deck.addCard(card2);
 		deck.addCard(card3);
 		deck.addCard(card4);
@@ -37,11 +37,6 @@ public class Dealer extends Player {
 //		deck.shuffle();
 
 		return deck;
-	}
-	
-	public boolean checkTooFewCards(Deck d)
-	{
-		return (d.size() <= 8) ? true : false;
 	}
 	
 	public int getLimit()
