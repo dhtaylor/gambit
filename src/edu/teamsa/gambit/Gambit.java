@@ -235,21 +235,21 @@ public class Gambit extends JFrame
 					endHand();
 				}
 					
-					if (user.getHandValue() == 21)
+				else if (user.getHandValue() == 21)
 					{
 						user.gameResults("Blackjack");
 						lblFooter.setText("Player Wins!");
 						lblFooter.setForeground(applicationWarning);
-						//flip dealer hand
+						refreshDealerCardsPanel();
 						endHand();
 					}
 
-					if (dealer.getHandValue() == 21)
+				else if (dealer.getHandValue() == 21)
 					{
 						user.gameResults("Dealer");
 						lblFooter.setText("House Wins!");
 						lblFooter.setForeground(applicationWarning);
-						//flip dealer hand
+						refreshDealerCardsPanel();
 						endHand();
 					}
 				

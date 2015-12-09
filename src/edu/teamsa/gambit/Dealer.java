@@ -11,6 +11,7 @@ public class Dealer extends Player {
 	{
 		Deck deck = new Deck();
 
+		//Test setup
 //		Card cardK = new Card(Suit.SPADE,FaceValue.KING,new ImageIcon("images/king_spade.jpg"));
 //		Card cardQ = new Card(Suit.SPADE,FaceValue.QUEEN,new ImageIcon("images/queen_spade.jpg"));
 //		Card cardJ = new Card(Suit.SPADE,FaceValue.JACK,new ImageIcon("images/jack_spade.jpg"));
@@ -25,13 +26,14 @@ public class Dealer extends Player {
 //		Card card2 = new Card(Suit.SPADE,FaceValue.TWO,new ImageIcon("images/2_spade.jpg"));
 //		Card card1 = new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg"));
 //		
-//		deck.addCard(card1);
-//		deck.addCard(card9);
+//		deck.addCard(new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg")));
+//		deck.addCard(card10);
 //		deck.addCard(cardK);
-//		deck.addCard(card2);
+//		deck.addCard(card1);
 //		deck.addCard(card3);
 //		deck.addCard(card4);
 //		deck.addCard(card5);
+		//End test code
 		
 		deck.createDeck();
 		deck.shuffle();
