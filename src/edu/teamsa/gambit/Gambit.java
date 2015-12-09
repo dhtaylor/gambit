@@ -456,6 +456,7 @@ public class Gambit extends JFrame
 		System.out.println("User Hand Value: " + user.getHandValue());
 		System.out.println(user.currentHand);
 		System.out.println("Dealer Hand value: " + dealer.getHandValue());
+		System.out.println("HardLimit: "+dealer.isHardLimit());
 		System.out.println(dealer.currentHand + "\n----------------\n");
 		/* End debugging output */
 		
