@@ -208,4 +208,25 @@ public class PlayerControlPanel extends JPanel
 	{
 		this.buttonGroup.clearSelection();
 	}
+	
+	public void disableButtonGroup()
+	{
+		this.five.setEnabled(false);
+		this.ten.setEnabled(false);
+		this.twenty.setEnabled(false);
+		this.fifty.setEnabled(false);
+		this.max.setEnabled(false);
+
+	}
+	
+	public void enableButtonGroup()
+	{
+		this.five.setEnabled(true);
+		this.ten.setEnabled(true);
+		this.twenty.setEnabled(true);
+		this.fifty.setEnabled(true);
+		this.max.setEnabled(true);
+		
+	}
+	
 }
