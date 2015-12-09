@@ -21,4 +21,10 @@ public class Hand {
 		return currentValue;
 	}
 
+	@Override
+	public String toString() {
+		return "Hand [cards=" + cards + "]";
+	}
+	
+
 }

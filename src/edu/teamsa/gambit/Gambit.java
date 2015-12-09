@@ -285,7 +285,7 @@ public class Gambit extends JFrame
 						cardPanel.getDealerCards().add(c);
 					}
 					
-					//todo flip dealer card on all
+					//todo flip dealer card on all blackJack instances
 					if(user.getHandValue()== 21 && dealer.getHandValue()==21){
 						user.gameResults("Push");
 						lblFooter.setText("Push");
@@ -379,24 +379,13 @@ public class Gambit extends JFrame
 					lblFooter.setText("House Wins!");
 					lblFooter.setForeground(applicationWarning);
 				}
-				else
+				else if (dealer.getHandValue()<user.getHandValue())
 				{
 					user.gameResults("Player");
 					lblFooter.setText("Player Wins!");
 					lblFooter.setForeground(applicationWarning);
 				}
-
-				playerControlPanel.getPlaceBet().setEnabled(true);
-				playerControlPanel.getHit().setEnabled(false);
-				playerControlPanel.getStay().setEnabled(false);
-				playerControlPanel.setBankLabel(user.getBank());
-				
-				resultPanel.getLblDWins().setText(String.format("Wins: %d", user.getWins()));
-				resultPanel.getLblDLosses().setText(String.format("Losses: %d", user.getLost()));
-				resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
-				resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
-				resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
-				
+				endHand();
 			}
 		});
 	}
@@ -469,6 +458,11 @@ public class Gambit extends JFrame
 		resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
 		resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
 		resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
+		
+		System.out.println("User Hand Value: " + user.getHandValue());
+		System.out.println(user.currentHand);
+		System.out.println("Dealer Hand value: " + dealer.getHandValue());
+		System.out.println(dealer.currentHand + "\n----------------\n");
 	}
 
 }
