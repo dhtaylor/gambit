@@ -285,11 +285,23 @@ public class Gambit extends JFrame
 						cardPanel.getDealerCards().add(c);
 					}
 					
+					//todo flip dealer card on all
+					if(user.getHandValue()== 21 && dealer.getHandValue()==21){
+						user.gameResults("Push");
+						lblFooter.setText("Push");
+						lblFooter.setForeground(applicationWarning);
+//DANDY! WE NEED YOU TO FLIP THE DEALER'S FACE DOWN CARD!
+						dealer.getHandCard(1).flip();
+						endHand();
+						}
+					
 					if (user.getHandValue() == 21)
 					{
 						user.gameResults("Blackjack");
 						lblFooter.setText("Player Wins!");
 						lblFooter.setForeground(applicationWarning);
+						//flip dealer hand
+						endHand();
 					}
 
 					if (dealer.getHandValue() == 21)
@@ -297,6 +309,8 @@ public class Gambit extends JFrame
 						user.gameResults("Dealer");
 						lblFooter.setText("House Wins!");
 						lblFooter.setForeground(applicationWarning);
+						//flip dealer hand
+						endHand();
 					}
 					
 				}
@@ -429,9 +443,7 @@ public class Gambit extends JFrame
 		user.gameResults("Dealer");
 		lblFooter.setText("You Busted! House Wins!");
 		lblFooter.setForeground(applicationWarning);
-		playerControlPanel.getPlaceBet().setEnabled(true);
-		playerControlPanel.getHit().setEnabled(false);
-		playerControlPanel.getStay().setEnabled(false);
+		endHand();
 
 		return;
 	}
@@ -441,12 +453,22 @@ public class Gambit extends JFrame
 		user.gameResults("Player");
 		lblFooter.setText("Dealer Busts!");
 		lblFooter.setForeground(applicationWarning);
+		endHand();
+		
+		return;
+	}
+	
+	public void endHand(){
 		playerControlPanel.getPlaceBet().setEnabled(true);
 		playerControlPanel.getHit().setEnabled(false);
 		playerControlPanel.getStay().setEnabled(false);
 		playerControlPanel.setBankLabel(user.getBank());
 		
-		return;
+		resultPanel.getLblDWins().setText(String.format("Wins: %d", user.getWins()));
+		resultPanel.getLblDLosses().setText(String.format("Losses: %d", user.getLost()));
+		resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
+		resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
+		resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
 	}
 
 }

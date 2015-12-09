@@ -12,15 +12,7 @@ public class Player {
 		currentHand.add(card);
 		return card;
 	}
-	
-	public void stay(){
-		//todo stay logic
-	}
-	
-	public void blackJack(){
-		//todo blackjack logic
-	}
-		
+			
 	public int getHandValue(){
 		int handValue = 0;
 		for(Card c : currentHand){
