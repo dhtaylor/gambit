@@ -178,6 +178,8 @@ public class Gambit extends JFrame
 				user.checkAces();
 				refreshUserCardsPanel();
 
+				resultPanel.getLblPHandValue().setText(String.format("Current Hand Value: %d", user.getHandValue()));
+				
 				if (user.getHandValue() > 21)
 					bust("Player");
 			}
@@ -223,8 +225,7 @@ public class Gambit extends JFrame
 					
 				}
 				
-//				if (user.getHandValue() == 21)
-//					playerControlPanel.getStay().doClick();
+				resultPanel.getLblPHandValue().setText(String.format("Current Hand Value: %d", user.getHandValue()));
 				
 				//blackjack logic block
 				if(user.getHandValue() == 21 && dealer.getHandValue()==21){
@@ -266,7 +267,7 @@ public class Gambit extends JFrame
 		
 		playerControlPanel.getStay().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
+				resultPanel.getLblPHandValue().setText(String.format("Current Hand Value: %d", user.getHandValue()));
 //Where the dealer hit method used to be. 
 				dealerHit();
 				refreshDealerCardsPanel();
@@ -427,6 +428,8 @@ public class Gambit extends JFrame
 		{
 			user.gameResults("Dealer"); // Seems backward, but if the player busts, the game results go to dealer.
 			lblFooter.setText("You Busted! House Wins!");
+			refreshDealerCardsPanel();
+			
 		}
 		else
 		{
@@ -448,6 +451,8 @@ public class Gambit extends JFrame
 		toggleControlPanel();
 		refreshResultPanel();
 		
+		resultPanel.getLblDHandValue().setText(String.format("Final Hand Value: %d", dealer.getHandValue()));
+		
 		/* Debugging Output */
 		System.out.println("User Hand Value: " + user.getHandValue());
 		System.out.println(user.currentHand);
@@ -464,11 +469,11 @@ public class Gambit extends JFrame
 	 */
 	private void refreshResultPanel()
 	{
-		resultPanel.getLblDWins().setText(String.format("Wins: %d", user.getLost())); // This works on the assumption that a user loss is a dealer win.
-		resultPanel.getLblDLosses().setText(String.format("Losses: %d", user.getWins())); // This works on the assumption that a user win is a dealer loss.
+		//resultPanel.getLblDHandValue().setText(String.format("Current Hand Value %d", dealer.getHandCard(0).cardValue));
 		resultPanel.getLblPWins().setText(String.format("Wins: %d", user.getWins()));
 		resultPanel.getLblPLosses().setText(String.format("Losses: %d", user.getLost()));
 		resultPanel.getLblPWinnings().setText(String.format("Winnings: $%d", user.getNetWinnings()));
+		resultPanel.getLblPHandValue().setText(String.format("Current Hand Value %d", user.getHandValue()));
 	}
 
 	/**
@@ -537,6 +542,9 @@ public class Gambit extends JFrame
 		cardPanel.getUserCards().removeAll();
 		cardPanel.getUserCards().validate();
 		cardPanel.getUserCards().repaint();
+		
+		resultPanel.getLblDHandValue().setText("Final Hand Value: 0");
+		resultPanel.getLblPHandValue().setText("Current Hand Value: 0");
 		
 		/* Debugging Output */
 		System.out.println("User Hand Value: " + user.getHandValue());

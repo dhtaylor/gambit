@@ -22,8 +22,10 @@ import javax.swing.border.Border;
 @SuppressWarnings("serial")
 public class ResultPanel extends JPanel
 {
-	private Dimension panelDimension = new Dimension(150, 550);
-	private Dimension labelDimension = new Dimension(150, 15);
+//	private Dimension panelDimension = new Dimension(150, 550);
+//	private Dimension labelDimension = new Dimension(150, 15);
+	private Dimension panelDimension = new Dimension(200, 550);
+	private Dimension labelDimension = new Dimension(200, 15);
 	private Border defaultBorder = BorderFactory.createEmptyBorder(10,10,10,10);
 	private Color panelColor = new Color(255, 255, 255);
 	private Color textColor = new Color(0, 0, 0);
@@ -31,14 +33,14 @@ public class ResultPanel extends JPanel
 	private String playerName = "";
 	private JPanel dealerResultPanel;
 	private JLabel lblDealer;
-	private JLabel lblDWins;
-	private JLabel lblDLosses;
+	private JLabel lblDHandValue;
 	
 	private JPanel playerResultPanel;
 	private JLabel lblPlayer;
 	private JLabel lblPWins;
 	private JLabel lblPLosses;
 	private JLabel lblPWinnings;
+	private JLabel lblPHandValue;
 	
 	public ResultPanel()
 	{
@@ -54,15 +56,9 @@ public class ResultPanel extends JPanel
 	}
 	
 	
-	public JLabel getLblDWins()
+	public JLabel getLblDHandValue()
 	{
-		return this.lblDWins;
-	}
-
-
-	public JLabel getLblDLosses()
-	{
-		return this.lblDLosses;
+		return this.lblDHandValue;
 	}
 
 
@@ -83,7 +79,11 @@ public class ResultPanel extends JPanel
 		return this.lblPWinnings;
 	}
 
-
+	public JLabel getLblPHandValue()
+	{
+		return this.lblPHandValue;
+	}
+	
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
@@ -147,10 +147,16 @@ public class ResultPanel extends JPanel
 		lblPWinnings.setForeground(this.textColor);
 		lblPWinnings.setBorder(BorderFactory.createEmptyBorder(0,20,0,0));
 		
+		lblPHandValue = new JLabel("Current Hand Value: 0");
+		lblPHandValue.setPreferredSize(this.labelDimension);
+		lblPHandValue.setForeground(this.textColor);
+		lblPHandValue.setBorder(BorderFactory.createEmptyBorder(0,20,0,0));
+		
 		playerResultPanel.add(lblPlayer);
 		playerResultPanel.add(lblPWins);
 		playerResultPanel.add(lblPLosses);
 		playerResultPanel.add(lblPWinnings);
+		playerResultPanel.add(lblPHandValue);
 
 		return playerResultPanel;
 	}
@@ -166,19 +172,13 @@ public class ResultPanel extends JPanel
 		lblDealer.setForeground(this.textColor);
 		lblDealer.setBorder(BorderFactory.createEmptyBorder(0,10,0,0));
 		
-		lblDWins = new JLabel("Wins: 0");
-		lblDWins.setPreferredSize(this.labelDimension);
-		lblDWins.setForeground(this.textColor);
-		lblDWins.setBorder(BorderFactory.createEmptyBorder(0,20,0,0));
-		
-		lblDLosses = new JLabel("Losses: 0");
-		lblDLosses.setPreferredSize(this.labelDimension);
-		lblDLosses.setForeground(this.textColor);
-		lblDLosses.setBorder(BorderFactory.createEmptyBorder(0,20,0,0));
+		lblDHandValue = new JLabel("Current Hand Value: 0");
+		lblDHandValue.setPreferredSize(this.labelDimension);
+		lblDHandValue.setForeground(this.textColor);
+		lblDHandValue.setBorder(BorderFactory.createEmptyBorder(0,20,0,0));
 		
 		dealerResultPanel.add(lblDealer);
-		dealerResultPanel.add(lblDWins);
-		dealerResultPanel.add(lblDLosses);
+		dealerResultPanel.add(lblDHandValue);
 		
 		return dealerResultPanel;
 		
