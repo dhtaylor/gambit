@@ -11,7 +11,7 @@ public class Card extends JLabel
 	public FaceValue faceValue;
 	public int cardValue;
 	public ImageIcon front;
-	public ImageIcon back = new ImageIcon("images/back.jpg");
+	public ImageIcon back = new ImageIcon(Card.class.getResource("/images/back.jpg"));
 	
 	Card(Suit suit, FaceValue faceValue, ImageIcon front){
 		this.suit = suit;
