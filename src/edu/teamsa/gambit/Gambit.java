@@ -634,6 +634,9 @@ public class Gambit extends JFrame
 
 	}
 	
+	/**
+	 * Method to Check to see if the dealer has a soft value hand and hits if below the hard limit 
+	 */
 	private void dealerHit(){
 		do
 		{

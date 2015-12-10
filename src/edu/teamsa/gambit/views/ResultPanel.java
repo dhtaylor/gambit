@@ -19,6 +19,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+/**
+ * Method for creating the GUI Result Panel that displays player name, statistics and hand value
+ * and displays the dealer name, dealer's hand value after processing the dealer's hand
+ * @author Team Something Awesomes
+ *
+ */
 @SuppressWarnings("serial")
 public class ResultPanel extends JPanel
 {
@@ -42,6 +48,9 @@ public class ResultPanel extends JPanel
 	private JLabel lblPWinnings;
 	private JLabel lblPHandValue;
 	
+	/**
+	 * Constructor that creates the result panel
+	 */
 	public ResultPanel()
 	{
 		super();
@@ -56,34 +65,56 @@ public class ResultPanel extends JPanel
 	}
 	
 	
+	/**
+	 * The dealer's hand value
+	 * @return - the dealer's and value label
+	 */
 	public JLabel getLblDHandValue()
 	{
 		return this.lblDHandValue;
 	}
 
 
+	/**
+	 * The number of wins by the player
+	 * @return - the players number of wins label
+	 */
 	public JLabel getLblPWins()
 	{
 		return this.lblPWins;
 	}
 
-
+	/**
+	 * The number of losses by the player
+	 * @return - the players number of losses label
+	 */
 	public JLabel getLblPLosses()
 	{
 		return this.lblPLosses;
 	}
 
-
+	/**
+	 * The net winnings/losses ($) of the player's betting
+	 * @return - the player's net betting wins/losses label
+	 */
 	public JLabel getLblPWinnings()
 	{
 		return this.lblPWinnings;
 	}
 
+	/**
+	 * The player's current hand value
+	 * @return - the current value of the player's land label
+	 */
 	public JLabel getLblPHandValue()
 	{
 		return this.lblPHandValue;
 	}
 	
+	/**
+	 * Sets the color of the panel
+	 * @param c - color of the panel
+	 */
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
@@ -93,12 +124,20 @@ public class ResultPanel extends JPanel
 		
 	}
 
+	/**
+	 * Sets the player name and adds it to the Player Label
+	 * @param name - name of the player
+	 */
 	public void setPlayer(String name)
 	{
 		this.playerName = name;
 		this.lblPlayer.setText("Player: " + this.playerName);
 	}
 	
+	/**
+	 * The color of text in the panel
+	 * @param c - color of text
+	 */
 	public void setTextColor(Color c)
 	{
 		this.textColor = c;
@@ -121,6 +160,10 @@ public class ResultPanel extends JPanel
 		
 	}
 	
+	/**
+	 * Method for creating the Player Result Panel
+	 * @return - playerResultPanel
+	 */
 	private JPanel createPlayerResultPanel()
 	{
 		playerResultPanel = new JPanel();
@@ -161,6 +204,10 @@ public class ResultPanel extends JPanel
 		return playerResultPanel;
 	}
 
+	/**
+	 * Method for creating the Dealer's Result Panel
+	 * @return - dealerResultPanel
+	 */
 	private JPanel createDealerResultPanel()
 	{
 		dealerResultPanel = new JPanel();

@@ -4,6 +4,12 @@ package edu.teamsa.gambit;
  */
 import javax.swing.ImageIcon;
 
+/**
+ * Contains methods for manipulating the deck and dealer's processing of "Soft" hands
+ * Extends the Player class
+ * @author Team Something Awesomes
+ *
+ */
 public class Dealer extends Player {
 
 	private int limit = 17;
@@ -15,30 +21,6 @@ public class Dealer extends Player {
 	public Deck getDeck()
 	{
 		Deck deck = new Deck();
-
-		//Test setup
-//		Card cardK = new Card(Suit.SPADE,FaceValue.KING,new ImageIcon("images/king_spade.jpg"));
-//		Card cardQ = new Card(Suit.SPADE,FaceValue.QUEEN,new ImageIcon("images/queen_spade.jpg"));
-//		Card cardJ = new Card(Suit.SPADE,FaceValue.JACK,new ImageIcon("images/jack_spade.jpg"));
-//		Card card10 = new Card(Suit.SPADE,FaceValue.TEN,new ImageIcon("images/10_spade.jpg"));
-//		Card card9 = new Card(Suit.SPADE,FaceValue.NINE,new ImageIcon("images/9_spade.jpg"));
-//		Card card8 = new Card(Suit.SPADE,FaceValue.EIGHT,new ImageIcon("images/8_spade.jpg"));
-//		Card card7 = new Card(Suit.SPADE,FaceValue.SEVEN,new ImageIcon("images/7_spade.jpg"));
-//		Card card6 = new Card(Suit.SPADE,FaceValue.SIX,new ImageIcon("images/6_spade.jpg"));
-//		Card card5 = new Card(Suit.SPADE,FaceValue.FIVE,new ImageIcon("images/5_spade.jpg"));
-//		Card card4 = new Card(Suit.SPADE,FaceValue.FOUR,new ImageIcon("images/4_spade.jpg"));
-//		Card card3 = new Card(Suit.SPADE,FaceValue.THREE,new ImageIcon("images/3_spade.jpg"));
-//		Card card2 = new Card(Suit.SPADE,FaceValue.TWO,new ImageIcon("images/2_spade.jpg"));
-//		Card card1 = new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg"));
-//		
-//		deck.addCard(new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg")));
-//		deck.addCard(card6);
-//		deck.addCard(card9);
-//		deck.addCard(card1);
-//		deck.addCard(card5);
-//		deck.addCard(card4);
-//		deck.addCard(card7);
-		//End test code
 		
 		deck.createDeck();
 		deck.shuffle();
@@ -46,30 +28,46 @@ public class Dealer extends Player {
 		return deck;
 	}
 	
+	/**
+	 * The value at which the dealer will stop hitting (hard 17 or above)
+	 * @return limit - the limit set for dealer to stop hitting
+	 */
 	public int getLimit()
 	{
 		return this.limit;
 	}
 	
+	/**
+	 * Boolean to see if the hard limit has been reached in the dealer's hand (17 or above)
+	 * @return - true if above hard limit and false if below hard limit
+	 */
 	public boolean isHardLimit()
 	{
 		return this.hardLimit;
 	}
 	
+	/**
+	 * Sets the hard limit amount
+	 * @param b - value of the hard limit to be set
+	 */
 	public void setHardLimit(boolean b)
 	{
 		this.hardLimit = b;
 	}
 	
 	/**
-	 * checks for a "soft 17" condition. if there is a hand value of 
-	 * @return
+	 * checks for a "soft 17" condition in the dealer's hand and below 17 
+	 * @return chkSoft - true if below 17 and false if above 17 with an Ace in the hand
 	 */
-	public boolean checkSoft(){
+	public boolean checkSoft()
+	{
 		boolean chkSoft = false;
-		if (this.getHandValue() == this.getLimit()){
-			for(Card card : this.currentHand){
-				if(card.getCardValue()==11){
+		if (this.getHandValue() == this.getLimit())
+		{
+			for(Card card : this.currentHand)
+			{
+				if(card.getCardValue()==11)
+				{
 					chkSoft = true;
 				}
 			}

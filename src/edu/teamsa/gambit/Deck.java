@@ -6,7 +6,13 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-public class Deck {
+/**
+ * Method for creating the deck of cards, shuffling the deck of cards and getting card information
+ * @author Team Something Awesomes
+ *
+ */
+public class Deck 
+{
 	
 	List<Card> deck = new ArrayList<Card>();
 	int deckIndex = 0;
@@ -15,7 +21,8 @@ public class Deck {
 	 * createDeck will add all 52 standard card values to the deck ArrayList. This method must be run at least once before 
 	 * before the hands are dealt. 
 	 */
-	public void createDeck(){
+	public void createDeck()
+	{
 		Suit suit = Suit.CLUB;
 		deck.add(new Card(suit,FaceValue.KING,new ImageIcon(Deck.class.getResource("/images/king_club.jpg"))));
 		deck.add(new Card(suit,FaceValue.QUEEN,new ImageIcon(Deck.class.getResource("/images/queen_club.jpg"))));
@@ -79,12 +86,17 @@ public class Deck {
 	 * deck.get(deckIndex - 1).
 	 * @return returns the card at the "top" of the deck. indicated by the deckIndex at the time the method is called. 
 	 */
-	public Card getTopCard(){
+	public Card getTopCard()
+	{
 		deckIndex++;
 		return deck.get(deckIndex - 1);
 	}
 	
-	public void shuffle(){
+	/**
+	 * Shuffles the collection or the deck of cards
+	 */
+	public void shuffle()
+	{
 		Collections.shuffle(deck);
 	}
 	
@@ -92,14 +104,27 @@ public class Deck {
 	 * addCard is a testing method which allows us to add specific cards to the deck. 
 	 * @param c the card to add to the deck.
 	 */
-	public void addCard(Card c){
+	public void addCard(Card c)
+	{
 		deck.add(c);
 	}
-	public Card getCard(int index){
+	
+	/**
+	 * 
+	 * @param index the position of the card to be returned in the array
+	 * @return card at the index position submitted
+	 */
+	public Card getCard(int index)
+	{
 		return deck.get(index);
 	}
 
-	public int size(){
+	/**
+	 * The size of the deck returned
+	 * @return the size of the deck
+	 */
+	public int size()
+	{
 		return this.deck.size() - this.deckIndex;
 	}
 	

@@ -9,6 +9,11 @@ package edu.teamsa.gambit;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+/**
+ * Card method that setups the cards and processes the value, suit and images of the cards
+ * @author Team Something Awesomes
+ *
+ */
 @SuppressWarnings("serial")
 public class Card extends JLabel
 {
@@ -28,45 +33,68 @@ public class Card extends JLabel
 	}
 	/**
 	 *setCardValue takes in an integer and sets the value for the card
-	 * @param value
+	 * @param value - the value of the card to be set
 	 */
 	public void setCardValue(int value){
 		this.cardValue = value;
 	}
 	/**
 	 * getFront returns the ImageIcon for the front of the card
-	 * @return
+	 * @return - the front of the card
 	 */
-	public ImageIcon getFront() {
+	public ImageIcon getFront()
+	{
 		return front;
 	}
 
-	public void setFront(ImageIcon front) {
+	/**
+	 * sets the ImageIcon for the front of the card
+	 * @param front - the ImageIcon for the front of a card
+	 */
+	public void setFront(ImageIcon front)
+	{
 		this.front = front;
 	}
+	
 	/**
 	 * getBack returns the ImageIcon for the back of the card
-	 * @return
+	 * @return - ImageIcon for the back of the card
 	 */
-	public ImageIcon getBack() {
+	public ImageIcon getBack()
+	{
 		return back;
 	}
 
-	public void setBack(ImageIcon back) {
+	/**
+	 * Sets the ImageIcon for the back of the card
+	 * @param back - ImageIcon for the back of the card
+	 */
+	public void setBack(ImageIcon back)
+	{
 		this.back = back;
 	}
 
-	public int getCardValue(){
+	/**
+	 * gets the value of the card
+	 * @return - value of the card
+	 */
+	public int getCardValue()
+	{
 		return cardValue;
 	}
+	
 	/**
 	 * getSuit returns the value for the Suite of the card from the Enum Suite
-	 * @return
+	 * @return the suit of the card
 	 */
-	public Suit getSuit(){
+	public Suit getSuit()
+	{
 		return this.suit;
 	}
 
+	/**
+	 * returns a string "Card: <faceValue of card> of <suit of card>"  ie Card: 10 of Hearts
+	 */
 	@Override
 	public String toString() {
 		return "Card: " + faceValue + " of " + suit;
@@ -96,6 +124,7 @@ public class Card extends JLabel
 			return false;
 		return true;
 	}
+	
 	/**
 	 * flip method toggles between the front image of the card and the back image with each implementation
 	 */
