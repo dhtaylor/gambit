@@ -3,17 +3,36 @@ package edu.teamsa.gambit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+/**
+ * The super class for dealer and user
+ * Contains methods for manipulating the player's and dealer's hands
+ * @author Team Something Awesomes
+ *
+ */
+public class Player 
+{
 	
+	/**  Creates a list of Cards called currentHand */
 	List<Card> currentHand = new ArrayList<Card>();
 		
-	public Card hit(Deck deck){
+	/**
+	 * Hit method to add another card to the hand
+	 * @param deck - the current deck
+	 * @return - card - returns a card to be added to the hand
+	 */
+	public Card hit(Deck deck)
+	{
 		Card card = deck.getTopCard();
 		currentHand.add(card);
 		return card;
 	}
 			
-	public int getHandValue(){
+	/**
+	 * Method for returning the value of the current hand
+	 * @return - handValue - the value of the current hand
+	 */
+	public int getHandValue()
+	{
 		int handValue = 0;
 		for(Card c : currentHand){
 			handValue = handValue + c.getCardValue();
@@ -21,11 +40,17 @@ public class Player {
 		return handValue;
 	}
 	
-	public Card getHandCard(int handIndex){
+	/** Gets a card from the current hand
+	 *@param - handIndex - the index of the card to be retrieved
+	 */
+	public Card getHandCard(int handIndex)
+	{
 		return currentHand.get(handIndex);
 	}
 	
-	public void clearHand(){
+	/** Method to clear the current hand after the hands are finished */
+	public void clearHand()
+	{
 		currentHand.removeAll(currentHand);
 	}
 	
