@@ -1,12 +1,17 @@
 package edu.teamsa.gambit;
-
+/**
+ * @author Team Something Awesomes
+ */
 import javax.swing.ImageIcon;
 
 public class Dealer extends Player {
 
 	private int limit = 17;
 	private boolean hardLimit = false;
-
+/**
+ * getDeck method creates an instance of Class Deck, shuffles the cards by running the shuffle method, and returns the new deck
+ * @return
+ */
 	public Deck getDeck()
 	{
 		Deck deck = new Deck();

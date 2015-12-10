@@ -1,4 +1,10 @@
 package edu.teamsa.gambit;
+/**
+ * @author Team Something Awesomes
+ * Class Card creates the object card and initializes the values for suit, face value, card value, 
+ * and the image for the front and back of the card. It has methods setCardValue, getFront, setFront,
+ * getBack, setBack, getCardValue, toString, getSuite, hashCode, flip, equals
+ */
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -20,11 +26,17 @@ public class Card extends JLabel
 		this.front = front;
 		this.setIcon(this.back);
 	}
-	
+	/**
+	 *setCardValue takes in an integer and sets the value for the card
+	 * @param value
+	 */
 	public void setCardValue(int value){
 		this.cardValue = value;
 	}
-	
+	/**
+	 * getFront returns the ImageIcon for the front of the card
+	 * @return
+	 */
 	public ImageIcon getFront() {
 		return front;
 	}
@@ -32,7 +44,10 @@ public class Card extends JLabel
 	public void setFront(ImageIcon front) {
 		this.front = front;
 	}
-
+	/**
+	 * getBack returns the ImageIcon for the back of the card
+	 * @return
+	 */
 	public ImageIcon getBack() {
 		return back;
 	}
@@ -44,7 +59,10 @@ public class Card extends JLabel
 	public int getCardValue(){
 		return cardValue;
 	}
-	
+	/**
+	 * getSuit returns the value for the Suite of the card from the Enum Suite
+	 * @return
+	 */
 	public Suit getSuit(){
 		return this.suit;
 	}
@@ -78,7 +96,9 @@ public class Card extends JLabel
 			return false;
 		return true;
 	}
-	
+	/**
+	 * flip method toggles between the front image of the card and the back image with each implementation
+	 */
 	public void flip()
 	{
 		String iconImage = this.getIcon().toString();
