@@ -23,6 +23,12 @@ import javax.swing.JRadioButton;
 import javax.swing.border.Border;
 
 
+/**
+ * Method for creating the GUI Player Control Panel that displays player information about
+ * current bank amount, bet values and setups the buttons for place bet, hit, stay and quit
+ * @author Team Something Awesomes
+ *
+ */
 @SuppressWarnings("serial")
 public class PlayerControlPanel extends JPanel
 {
@@ -47,6 +53,10 @@ public class PlayerControlPanel extends JPanel
 	
 	private int bankAmount;
 	
+	/**
+	 * Constructor for creating the Player Control Panel
+	 * @param bankAmount - player's bank amount
+	 */
 	public PlayerControlPanel(int bankAmount)
 	{
 		super();
@@ -103,58 +113,102 @@ public class PlayerControlPanel extends JPanel
 		this.add(this.quit);
 		
 	}
-
+	
+	/**
+	 * Getter for the value of the radio button five
+	 * @return - value of the radio button - five
+	 */
 	public JRadioButton getFive()
 	{
 		return five;
 	}
 
+	/**
+	 * Getter for the value of the radio button ten
+	 * @return - value of the radio button - ten
+	 */
 	public JRadioButton getTen()
 	{
 		return ten;
 	}
 
+	/**
+	 * Getter for the value of the radio button twenty
+	 * @return - value of the radio button - twenty
+	 */
 	public JRadioButton getTwenty()
 	{
 		return twenty;
 	}
 
+	/**
+	 * Getter for the value of the radio button fifty
+	 * @return - value of the radio button - fifty
+	 */
 	public JRadioButton getFifty()
 	{
 		return fifty;
 	}
 
+	/**
+	 * Getter for the value of the radio button max
+	 * @return - value of the radio button - max bet aka bank value
+	 */
 	public JRadioButton getMax()
 	{
 		return max;
 	}
 
+	/**
+	 * Returns the button name that was selected - PlaceBet
+	 * @return - placeBet
+	 */
 	public JButton getPlaceBet()
 	{
 		return placeBet;
 	}
 
+	/**
+	 * Returns the button name that was selected - Hit
+	 * @return - hit
+	 */
 	public JButton getHit()
 	{
 		return hit;
 	}
 
+	/**
+	 * Returns the button name that was selected - Stay
+	 * @return - stay
+	 */
 	public JButton getStay()
 	{
 		return stay;
 	}
 
+	/**
+	 * Returns the button name that was selected - Quit
+	 * @return - quit
+	 */
 	public JButton getQuit()
 	{
 		return this.quit;
 	}
 	
+	/**
+	 * Sets the bank amount label
+	 * @param bankAmount - value of the current bank amount
+	 */
 	public void setBankLabel(int bankAmount)
 	{
 		this.bankAmount = bankAmount;
 		lblBank.setText("Bank: $" + bankAmount);
 	}
 	
+	/**
+	 * Sets the color of the panel
+	 * @param c
+	 */
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
@@ -169,6 +223,10 @@ public class PlayerControlPanel extends JPanel
 		}
 	}
 
+	/**
+	 * Sets the color of the text in the panel
+	 * @param c
+	 */
 	public void setTextColor(Color c)
 	{
 		this.textColor = c;
@@ -184,6 +242,10 @@ public class PlayerControlPanel extends JPanel
 
 	}
 	
+	/**
+	 * Getter for retrieving the current bet value
+	 * @return - value of the current bet selected by the player
+	 */
 	public int getSelectedBetValue()
 	{
 		if (five.isSelected())
@@ -204,11 +266,18 @@ public class PlayerControlPanel extends JPanel
 		return 0;
 	}
 	
+	/**
+	 * Clears the displayed Selected Bet Value
+	 */
 	public void clearSelectedBetValue()
 	{
 		this.buttonGroup.clearSelection();
 	}
 	
+	/**
+	 * Disabled Bet selection values after the user has selected place bet
+	 * and is playing their hand
+	 */
 	public void disableButtonGroup()
 	{
 		this.five.setEnabled(false);
@@ -219,6 +288,9 @@ public class PlayerControlPanel extends JPanel
 
 	}
 	
+	/**
+	 * Enables the Bet selection values for the player to select a bet amount
+	 */
 	public void enableButtonGroup()
 	{
 		this.five.setEnabled(true);

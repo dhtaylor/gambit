@@ -16,6 +16,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+/**
+ * Method for creating the GUI panel that displays the dealer's and user's cards
+ * @author Team Something Awesomes
+ *
+ */
 @SuppressWarnings("serial")
 public class CardPanel extends JPanel
 {
@@ -28,6 +33,9 @@ public class CardPanel extends JPanel
 	private JPanel dealerCards = new JPanel();
 
 	
+	/**
+	 * Constructor for creating the card panel that houses the user's and dealer's cards
+	 */
 	public CardPanel()
 	{
 		super();
@@ -41,13 +49,22 @@ public class CardPanel extends JPanel
 		
 	}
 	
+	/**
+	 * Sets the color of the Cardpanel
+	 * @param c - the color for the panel
+	 */
 	public void setPanelColor(Color c)
 	{
 		this.panelColor = c;
 		this.setBackground(this.panelColor);
 	}
 	
-	public JPanel createUserPanel(){
+	/**
+	 * Creates the panel that houses the player's cards
+	 * @return - the userCards
+	 */
+	public JPanel createUserPanel()
+	{
 		userCards.setBackground(panelColor);
 		userCards.setLayout(new GridLayout(1, 5, 0 , 0));
 		userCards.setBorder(defaultBorder);
@@ -55,7 +72,13 @@ public class CardPanel extends JPanel
 		return userCards;
 
 	}
-	public JPanel createDealerPanel(){
+	
+	/**
+	 * Creates the panel that houses the dealers's cards
+	 * @return - the dealerCards
+	 */
+	public JPanel createDealerPanel()
+	{
 		dealerCards.setBackground(panelColor);
 		dealerCards.setLayout(new GridLayout(1, 5, 0, 0));
 		dealerCards.setBorder(defaultBorder);
@@ -64,11 +87,19 @@ public class CardPanel extends JPanel
 
 	}
 	
+	/**
+	 * Getter for User Cards
+	 * @return - userCards
+	 */
 	public JPanel getUserCards()
 	{
 		return this.userCards;
 	}
 
+	/**
+	 * Getter for Dealer Cards
+	 * @return - dealerCards
+	 */
 	public JPanel getDealerCards()
 	{
 		return this.dealerCards;

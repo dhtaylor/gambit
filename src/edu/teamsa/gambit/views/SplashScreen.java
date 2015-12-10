@@ -15,12 +15,21 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Method for creating the initial splash screen when the GUI program is launched
+ * Extends JPanel
+ * @author Team Something Awesomes
+ *
+ */
 @SuppressWarnings("serial")
 public class SplashScreen extends JPanel
 {
 	private JButton start;
 	private JButton quit;
 	
+	/**
+	 * Constructor for creating the splash screen
+	 */
 	public SplashScreen()
 	{
 		super();
@@ -37,11 +46,19 @@ public class SplashScreen extends JPanel
 
 	}
 
+	/**
+	 * Getter for returning the start button if selected
+	 * @return -start
+	 */
 	public JButton getStart()
 	{
 		return this.start;
 	}
 
+	/**
+	 * Getter for returning the quit button if selected
+	 * @return - quit
+	 */
 	public JButton getQuit()
 	{
 		return this.quit;

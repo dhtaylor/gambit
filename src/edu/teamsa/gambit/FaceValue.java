@@ -11,11 +11,20 @@ public enum FaceValue {
 	
 	public int cardValue;
 	
-	private FaceValue(int value){
+	/** Sets the card value
+	 * @param value - value of the card
+	 */
+	private FaceValue(int value)
+	{
 		this.cardValue = value;
 	}
 	
-	public int getCardValue(){
+	/**
+	 * Getter for returning the value of the card
+	 * @return value of the card
+	 */
+	public int getCardValue()
+	{
 		return cardValue;
 	}
 	
