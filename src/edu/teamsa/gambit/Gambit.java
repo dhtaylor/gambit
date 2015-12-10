@@ -226,7 +226,7 @@ public class Gambit extends JFrame
 //				if (user.getHandValue() == 21)
 //					playerControlPanel.getStay().doClick();
 				
-				//todo flip dealer card on all blackJack instances
+				//blackjack logic block
 				if(user.getHandValue() == 21 && dealer.getHandValue()==21){
 					user.gameResults("Push");
 					lblFooter.setText("Push");
@@ -252,6 +252,7 @@ public class Gambit extends JFrame
 						refreshDealerCardsPanel();
 						endHand();
 					}
+				//end blackjack logic block
 				
 			}
 		});
@@ -266,24 +267,19 @@ public class Gambit extends JFrame
 		playerControlPanel.getStay().addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				do
-				{
-					dealer.checkAces(dealer.getLimit()); // checkAces() only works if HandValue > 21
-					
-					if (dealer.getHandValue() >= dealer.getLimit())
-						dealer.setHardLimit(true);
-
-					if (dealer.getHandValue() < dealer.getLimit())
-						dealer.hit(deck);
-					
-				}
-				while(dealer.getHandValue() <= dealer.getLimit() && !dealer.isHardLimit());
-
+//Where the dealer hit method used to be. 
+				dealerHit();
 				refreshDealerCardsPanel();
 
 				if (dealer.getHandValue() > 21)
 				{
-					bust("Dealer");
+					dealer.checkAces();
+					if(dealer.getHandValue()>21){
+						bust("Dealer");
+					}
+					else if (dealer.getHandValue()< 17){
+						dealerHit();
+					}
 					return;
 				}
 				
@@ -628,6 +624,22 @@ public class Gambit extends JFrame
 			
 		}
 
+	}
+	
+	private void dealerHit(){
+		do
+		{
+			dealer.checkAces(); // checkAces() only works if HandValue > 21
+			
+			if (dealer.getHandValue() >= dealer.getLimit() && !dealer.checkSoft())
+				dealer.setHardLimit(true);
+
+			else if (dealer.getHandValue() < dealer.getLimit() | dealer.checkSoft())
+				dealer.hit(deck);
+			dealer.checkAces();
+			
+		}
+		while(dealer.getHandValue() <= dealer.getLimit() && !dealer.isHardLimit());
 	}
 
 }

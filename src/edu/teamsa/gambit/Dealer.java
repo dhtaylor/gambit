@@ -27,12 +27,12 @@ public class Dealer extends Player {
 //		Card card1 = new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg"));
 //		
 //		deck.addCard(new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_spade.jpg")));
-//		deck.addCard(card10);
-//		deck.addCard(cardK);
+//		deck.addCard(card6);
+//		deck.addCard(card9);
 //		deck.addCard(card1);
-//		deck.addCard(card3);
-//		deck.addCard(card4);
 //		deck.addCard(card5);
+//		deck.addCard(card4);
+//		deck.addCard(card7);
 		//End test code
 		
 		deck.createDeck();
@@ -56,7 +56,21 @@ public class Dealer extends Player {
 		this.hardLimit = b;
 	}
 	
-	public void createTestCards(){
+	/**
+	 * checks for a "soft 17" condition. if there is a hand value of 
+	 * @return
+	 */
+	public boolean checkSoft(){
+		boolean chkSoft = false;
+		if (this.getHandValue() == this.getLimit()){
+			for(Card card : this.currentHand){
+				if(card.getCardValue()==11){
+					chkSoft = true;
+				}
+			}
+		}
+		
+		return chkSoft;
 
 	}
 }
