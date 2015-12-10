@@ -1,5 +1,8 @@
 package edu.teamsa.gambit;
-
+/**
+ * @author Team Something Awesomes
+ * Junit tests for the class Player
+ */
 import static org.junit.Assert.*;
 
 import javax.swing.ImageIcon;
@@ -10,7 +13,10 @@ public class PlayerTest {
 
 	Deck myDeck = new Deck();
 	Player myPlayer = new Player();
-	
+	/**
+	 * testHit test the method hit, it uses the deck created, adds a specific card to the test
+	 * then runs the method and compares the expected and actual cards returned
+	 */
 	@Test
 	public void testHit() {
 		myDeck.addCard(new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_club.jpg")));
@@ -23,16 +29,10 @@ public class PlayerTest {
 		assertEquals(expected, actual);	
 	}
 
-//	@Test
-//	public void testStay() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testBlackJack() {
-//		fail("Not yet implemented");
-//	}
-//
+/**
+ * testGetHandValue adds five specific cards to the deck, and hits each time testing the returned value
+ * from the hand by running the method and comparing it to the expected results
+ */
 	@Test
 	public void testGetHandValue() {
 		myDeck.addCard(new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_club.jpg")));
@@ -62,12 +62,10 @@ public class PlayerTest {
 		actual = myPlayer.getHandValue();
 		assertEquals(expected, actual);
 	}
-//
-//	@Test
-//	public void testGetHandCard() {
-//		fail("Not yet implemented");
-//	}
-//
+/**
+ * testClearHand tests the clearHand method, it creates a hand and clears it, comparing the expected hand Value of 0 to the actual hand 
+ * value after running the method
+ */
 	@Test
 	public void testClearHand() {
 		myDeck.addCard(new Card(Suit.SPADE,FaceValue.ACE,new ImageIcon("images/A_club.jpg")));
@@ -89,7 +87,10 @@ public class PlayerTest {
 		assertEquals(expected, myPlayer.getHandValue());
 		
 	}
-
+/**
+ * testCheckAces creates five unique scenarios of hands that have aces and makes sure the method changes 
+ * the value of the aces when it should
+ */
 	@Test
 	public void testCheckAces() {
 		int expected = 11;

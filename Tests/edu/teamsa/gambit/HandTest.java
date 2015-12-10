@@ -1,5 +1,8 @@
 package edu.teamsa.gambit;
-
+/**
+ * @author Team Something Awesomes
+ * Junit tests for the class Hand
+ */
 import static org.junit.Assert.*;
 
 import javax.swing.ImageIcon;
@@ -13,7 +16,10 @@ public class HandTest {
 	
 	Hand testHand = new Hand(card1, card2); 
 			
-
+/**
+ * testSetCurrentValue tests the method setCurrentValue, it runs the method and sets the value to 14 then 
+ * compares the actual and expected values
+ */
 	@Test
 	public void testSetCurrentValue() {
 		testHand.setCurrentValue(14);
@@ -22,7 +28,10 @@ public class HandTest {
 		assertEquals(expected, actual);
 
 	}
-
+/**
+ * testGetCurrentValue tests the getCurrentValue, it uses the hand created including the king and three, then 
+ * runs the method and compares the expected value and the actual value
+ */
 	@Test
 	public void testGetCurrentValue() {
 		int expected = 13;
