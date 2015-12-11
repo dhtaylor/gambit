@@ -97,7 +97,7 @@ public class Card extends JLabel
 	}
 
 	/**
-	 * returns a string "Card: <faceValue of card> of <suit of card>"  ie Card: 10 of Hearts
+	 * returns a string "Card: [faceValue of card] of [suit of card]"  ie Card: 10 of Hearts
 	 */
 	@Override
 	public String toString() {

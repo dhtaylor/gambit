@@ -46,7 +46,9 @@ public class Player
 	}
 	
 	/** Gets a card from the current hand
-	 *@param - handIndex - the index of the card to be retrieved
+	 *@param handIndex	This is an int that represents the index of the card to be retrieved
+	 * @return Returns a Card object requested
+	 * 
 	 */
 	public Card getHandCard(int handIndex)
 	{
@@ -65,7 +67,10 @@ public class Player
 	 * the loop will run through each card in the players hand, then check if the current hand value is greater than 21.
 	 * checking at this point is important for cases where a hand contains multiple aces at value 11. if the total is greater than 
 	 * 21 it will set the current card's value to 1. the loop will then go to the next card, check the hand value (which should
-	 * now be less than 21) and continue normally. 
+	 * now be less than 21) and continue normally.
+	 * 
+	 * @param limit	This is an it representing the hand value that you want to stay on.
+	 * 
 	 */
 	public void checkAces(int limit)
 	{

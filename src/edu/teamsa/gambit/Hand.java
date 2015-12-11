@@ -23,8 +23,9 @@ public class Hand
 	//public int aceCount;
 	/**
 	 * Hand constructor intializes the value of currentValue by adding the cardValue of cardOne and cardTwo
-	 * @param cardOne
-	 * @param cardTwo
+	 * @param cardOne	The Card representing one of the cards to add
+	 * @param cardTwo	The Card representing the second of the cards to add
+	 * 
 	 */
 	public Hand(Card cardOne, Card cardTwo)
 	{
@@ -51,7 +52,7 @@ public class Hand
 	}
 
 	/**
-	 * To String method to return a string of "Hand [cards= <cards in the hand> ]
+	 * To String method to return a string of "Hand [cards = cards in the hand]
 	 */
 	@Override
 	public String toString() 

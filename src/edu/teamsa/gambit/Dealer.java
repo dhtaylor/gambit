@@ -6,7 +6,6 @@ package edu.teamsa.gambit;
  * 
  * Team Assignment Project
  */
-import javax.swing.ImageIcon;
 
 /**
  * Contains methods for manipulating the deck and dealer's processing of "Soft" hands
@@ -20,7 +19,8 @@ public class Dealer extends Player {
 	private boolean hardLimit = false;
 /**
  * getDeck method creates an instance of Class Deck, shuffles the cards by running the shuffle method, and returns the new deck
- * @return
+ * @return Returns the deck object with a set of 52 cards
+ * 
  */
 	public Deck getDeck()
 	{

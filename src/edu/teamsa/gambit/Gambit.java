@@ -21,7 +21,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.Timer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -64,7 +63,7 @@ public class Gambit extends JFrame
 	/**
 	 * This is the main entry point to the Gambit game.
 	 * 
-	 * @param args
+	 * @param args These are the arguments that can be passed to the method (None Implemented)
 	 * 
 	 */
 	public static void main(String[] args)
@@ -570,6 +569,9 @@ public class Gambit extends JFrame
 	/**
 	 * This message shows a dialog box that warns the user that their bet has exceeded the amount
 	 * they have in their bank.
+	 * 
+	 * @param amount	This is an int representing the bet amount
+	 * @return	Returns a boolean value of whether the bet amount exceeds the user bank
 	 * 
 	 */
 	private boolean exceedsBank(int amount)

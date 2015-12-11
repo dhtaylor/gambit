@@ -207,7 +207,8 @@ public class PlayerControlPanel extends JPanel
 	
 	/**
 	 * Sets the color of the panel
-	 * @param c
+	 * @param c This is a Color object representing the desired panel color
+	 * 
 	 */
 	public void setPanelColor(Color c)
 	{
@@ -225,7 +226,8 @@ public class PlayerControlPanel extends JPanel
 
 	/**
 	 * Sets the color of the text in the panel
-	 * @param c
+	 * @param c This is the Color object representing the desired text color
+	 * 
 	 */
 	public void setTextColor(Color c)
 	{
