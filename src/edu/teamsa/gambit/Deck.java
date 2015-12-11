@@ -7,8 +7,12 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 /**
+ * **
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
+ * 
+ * Team Assignment Project
  * Method for creating the deck of cards, shuffling the deck of cards and getting card information
- * @author Team Something Awesomes
  *
  */
 public class Deck 

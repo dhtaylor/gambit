@@ -1,6 +1,11 @@
 package edu.teamsa.gambit;
 /**
- * @author Team Something Awesomes
+ * 
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
+ * 
+ * Team Assignment Project
+ * 
  * Class Hand creates an object representing the cards in the player/users hand
  */
 import java.util.Collection;

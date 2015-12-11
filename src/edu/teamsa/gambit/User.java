@@ -10,10 +10,15 @@ import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /**
+ * **
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
+ * 
+ * Team Assignment Project
+ * 
  * Extends the Player class
  * Methods for processing the User information, storing and retrieving the user information from a serialized file
  * Processing the bank and the results of the game and the player's stats
- * @author Team Something Awesomes
  *
  */
 public class User extends Player {

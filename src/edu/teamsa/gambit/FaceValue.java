@@ -1,7 +1,10 @@
 package edu.teamsa.gambit;
-/**
+/** 
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
  * 
- * @author Team Something Awesomes
+ * Team Assignment Project
+ * 
  *	Enum FaceValue sets the integer value for the cards in the deck
  */
 public enum FaceValue {

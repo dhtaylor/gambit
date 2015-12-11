@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * **
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
+ * 
+ * Team Assignment Project
+ * 
  * The super class for dealer and user
  * Contains methods for manipulating the player's and dealer's hands
- * @author Team Something Awesomes
  *
  */
 public class Player 

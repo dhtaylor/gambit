@@ -1,6 +1,10 @@
 package edu.teamsa.gambit;
 /**
- * @author Team Something Awesomes
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
+ * 
+ * Team Assignment Project
+ * 
  * Class Card creates the object card and initializes the values for suit, face value, card value, 
  * and the image for the front and back of the card. It has methods setCardValue, getFront, setFront,
  * getBack, setBack, getCardValue, toString, getSuite, hashCode, flip, equals

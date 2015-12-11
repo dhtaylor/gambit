@@ -1,3 +1,8 @@
+/**
+ * @author Team Something Awesomes - Dandy Taylor, Steve Young, Ryan Thatcher, Brittany Hofstetter
+ * 12/10/2015
+ * 
+ * Team Assignment Project
 /*
  * Assignment	Group Project
  * Program		Gambit
